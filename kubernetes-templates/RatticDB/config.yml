@@ -1,0 +1,6 @@
+name: "Rattic DB"
+description: "Password Database"
+version: 1.0.0
+category: Databases
+maintainer: Fabian Hartmann
+projectURL: https://github.com/fabianhartmann2/docker-ratticweb
