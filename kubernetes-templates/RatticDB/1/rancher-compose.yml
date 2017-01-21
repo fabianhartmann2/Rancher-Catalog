@@ -19,3 +19,18 @@ catalog:
       default: "ERROR"
       required: false
       type: string
+    - variable: "RC_SECRET"
+      label: Enter a Secret to encrypt the Database
+      description: | # The description of the question to show the user how to answer the question.
+      default: ""
+      required: true
+      type: password
+    - variable: "RC_TC"
+      label: "Enter your Timezone"
+      description: | # The description of the question to show the user how to answer the question.
+      default: "Europe/Zurich"
+      required: true
+      type: enum
+      options: # List of options if using type of `enum`
+        - Europe/Paris
+        - Europe/Berlin
