@@ -9,13 +9,13 @@ catalog:
   questions:
     - variable: "RC_DEBUG"
       label: "Enable debug Mode?"
-      description: |
+      description: | # The description of the question to show the user how to answer the question.
       default: false
       required: true
       type: boolean
     - variable: "RC_LOGLEVEL"
-      label: "Test"
-      description: "testdescription"
+      label: "Define the Loglevel"
+      description: | # The description of the question to show the user how to answer the question.
       default: "ERROR"
       required: false
       type: string
