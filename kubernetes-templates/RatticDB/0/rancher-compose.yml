@@ -94,3 +94,9 @@ catalog:
       default: ""
       required: false
       type: string
+    - variable: "RC_MAIL_PORT"
+      label: "Mailserver Port"
+      description: | #
+      default: ""
+      required: false
+      type: string
