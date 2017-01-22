@@ -88,3 +88,9 @@ catalog:
       default: ""
       required: false
       type: string
+    - variable: "RC_MAIL_HOST"
+      label: "Mailserver"
+      description: | #
+      default: ""
+      required: false
+      type: string
