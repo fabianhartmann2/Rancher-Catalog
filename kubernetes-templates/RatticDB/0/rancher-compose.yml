@@ -42,11 +42,11 @@ catalog:
       type: boolean
     - variable: "RC_PWEXPORT"
       label: RC_PWEXPORT
-      
       description: | Allows the export of all PWs to a file.
       default: false
       required: true
       type: boolean
+      
     - variable: "RC_ATTSIZE"
       label: RC_ATTSIZE
       description: | Size of an attachment.
