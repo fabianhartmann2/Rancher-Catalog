@@ -8,19 +8,19 @@ catalog:
   #upgrade_from:
   questions:
     - variable: "RC_DEBUG"
-      label: "Enable debug Mode?"
+      label: RC_DEBUG
       description: |
       default: false
       required: true
       type: boolean
     - variable: "RC_LOGLEVEL"
-      label: "Define the Loglevel"
+      label: RC_LOGLEVEL
       description: | Keep in mind, a deeper log level generates more data.
       default: "ERROR"
       required: false
       type: string
     - variable: "RC_SECRET"
-      label: Enter a Secret to encrypt the Database
+      label: RC_SECRET
       description: | # The description of the question to show the user how to answer the question.
       default: ""
       required: true
@@ -75,4 +75,3 @@ catalog:
       default: ratticDB
       required: true
       type: password
-    
