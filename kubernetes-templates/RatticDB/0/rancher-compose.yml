@@ -142,3 +142,9 @@ catalog:
       default: ""
       required: false
       type: string
+    - variable: "RC_LDAP_BINDPW"
+      label: "LDAP bind PW"
+      description: | #
+      default: ""
+      required: false
+      type: Password
