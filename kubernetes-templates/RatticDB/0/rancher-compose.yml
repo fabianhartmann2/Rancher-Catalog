@@ -100,3 +100,9 @@ catalog:
       default: ""
       required: false
       type: int
+    - variable: "RC_MAIL_TLS"
+      label: "Mailserver  uses TLS"
+      description: | #
+      default: false
+      required: false
+      type: boolean
