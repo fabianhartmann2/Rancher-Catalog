@@ -37,9 +37,9 @@ catalog:
     - variable: "RC_PWEXP"
       label: "USer Password valit for"
       description: | # Test
-      default: false
+      default: 90
       required: true
-      type: boolean
+      type: int
     - variable: "RC_PWEXPORT"
       label: "Allow export to file"
       description: | # Allows the export of all PWs to a file.
@@ -49,6 +49,6 @@ catalog:
     - variable: RC_ATTSIZE
       label: "Size of attachments"
       description: | # Test
-      default: "16777216"
+      default: 16777216
       required: yes
       type: int
