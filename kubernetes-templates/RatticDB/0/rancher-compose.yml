@@ -106,3 +106,9 @@ catalog:
       default: false
       required: false
       type: boolean
+    - variable: "RC_MAIL_USER"
+      label: "Mailserver User"
+      description: | #
+      default: ""
+      required: false
+      type: string
