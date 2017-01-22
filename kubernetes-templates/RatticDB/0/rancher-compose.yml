@@ -34,3 +34,45 @@ catalog:
       options: # List of options if using type of `enum`
         - Europe/Paris
         - Europe/Berlin
+    - variable: "RC_PWEXP"
+      label: RC_PWEXP
+      description: | Defines how long a User Password is valid.
+      required: false
+      type: int
+    - variable: "RC_PWEXPORT"
+      label: RC_PWEXPORT
+      description: | Allows the export of all PWs to a file.
+      default: false
+      required: true
+      type: boolean
+    - variable: "RC_ATTSIZE"
+      label: RC_ATTSIZE
+      description: | Size of an attachment.
+      default: "16777216"
+      required: false
+      type: int
+    - variable: "RC_DB_NAME"
+      label: RC_DB_NAME
+      description: Name ot the Database.
+      default: ratticDB
+      required: true
+      type: string
+    - variable: "RC_DB_USER"
+      label: RC_DB_USER
+      description: User ot the Database.
+      default: ratticUser
+      required: true
+      type: string
+    - variable: "RC_DB_PW"
+      label: RC_DB_PW
+      description: Password ot the Database User.
+      default: ratticDB
+      required: true
+      type: password
+    - variable: "RC_DB_PW"
+      label: RC_DB_PW
+      description: Password ot the Database User.
+      default: ratticDB
+      required: true
+      type: password
+    
