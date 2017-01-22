@@ -8,19 +8,19 @@ catalog:
   #upgrade_from:
   questions:
     - variable: "RC_DEBUG"
-      label: RC_DEBUG
+      label: "Enable Debug Mode"
       description: |  # The description of the question to show the user how to answer the question.
       default: false
       required: true
       type: boolean
     - variable: "RC_LOGLEVEL"
-      label: RC_LOGLEVEL
+      label: "Define Log Level"
       description: | # The description of the question to show the user how to answer the question.
       default: "ERROR"
       required: false
       type: string
     - variable: "RC_SECRET"
-      label: RC_SECRET
+      label: "Database Encryption Key"
       description: | # The description of the question to show the user how to answer the question.
       default: ""
       required: true
@@ -35,43 +35,37 @@ catalog:
         - Europe/Paris
         - Europe/Berlin
     - variable: "RC_PWEXP"
-      label: RC_PWEXP
+      label: "USer Password valit for"
       description: | # Test
       default: false
       required: true
       type: boolean
     - variable: "RC_PWEXPORT"
-      label: RC_PWEXPORT
+      label: "Allow export to file"
       description: | # Allows the export of all PWs to a file.
       default: false
       required: true
       type: boolean
     - variable: "RC_ATTSIZE"
-      label: RC_ATTSIZE
+      label: "Define attachment file size"
       description: | Size of an attachment.
       default: "16777216"
       required: false
       type: int
     - variable: "RC_DB_NAME"
-      label: RC_DB_NAME
+      label: "Database name"
       description: Name ot the Database.
       default: ratticDB
       required: true
       type: string
     - variable: "RC_DB_USER"
-      label: RC_DB_USER
+      label: "Database User"
       description: User ot the Database.
       default: ratticUser
       required: true
       type: string
     - variable: "RC_DB_PW"
-      label: RC_DB_PW
-      description: Password ot the Database User.
-      default: ratticDB
-      required: true
-      type: password
-    - variable: "RC_DB_PW"
-      label: RC_DB_PW
+      label: "Database User password"
       description: Password ot the Database User.
       default: ratticDB
       required: true
