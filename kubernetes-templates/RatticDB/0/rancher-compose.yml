@@ -82,3 +82,5 @@ catalog:
       default: false
       required: true
       type: boolean
+
+      
