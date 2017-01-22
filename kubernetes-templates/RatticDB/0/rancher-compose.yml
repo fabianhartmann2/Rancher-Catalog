@@ -72,13 +72,13 @@ catalog:
       type: password
     - variable: RC_DB_PORT
       label: "Port of the Database"
-      description: | #
+      description: | # test
       default: 3306
       required: true
       type: int
     - variable: RC_MAIL
       label: "Enable Mail service"
-      description: | #
+      description: | # test
       default: false
       required: true
       type: boolean
