@@ -46,11 +46,9 @@ catalog:
       default: false
       required: true
       type: boolean
-    - variable: "RC_ATTSIZE"
-      label: "Define attachment file size"
-      description: | Size of an attachment.
+    - variable: RC_ATTSIZE
+      label: "Size of attachments"
+      description: | # Test
       default: "16777216"
-      required: false
+      required: yes
       type: int
-
-      
