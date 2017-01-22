@@ -75,4 +75,16 @@ catalog:
       description: Port of the Database.
       default: 3306
       required: true
-      type: int    
+      type: int
+    - variable: "RC_MAIL"
+      label: "Mail Service"
+      description: | #
+      default: false
+      required: true
+      type: boolean
+    - variable: "RC_MAIL_FP"
+      label: "Mail: FP"
+      description: | #
+      default: ""
+      required: false
+      type: string    
