@@ -136,4 +136,9 @@ catalog:
       default: ""
       required: false
       type: string
-      
+    - variable: "RC_LDAP_BINDN"
+      label: "LDAP bind DN"
+      description: | #
+      default: ""
+      required: false
+      type: string
