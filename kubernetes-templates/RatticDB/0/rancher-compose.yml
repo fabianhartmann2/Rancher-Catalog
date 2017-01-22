@@ -124,3 +124,9 @@ catalog:
       default: ""
       required: false
       type: string
+    - variable: "RC_LDAP"
+      label: "Enable LDAP Bind"
+      description: | #
+      default: false
+      required: true
+      type: boolean
