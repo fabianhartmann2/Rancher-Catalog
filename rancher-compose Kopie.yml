@@ -70,15 +70,3 @@ catalog:
       default: ""
       required: true
       type: password
-    - variable: RC_DB_PORT
-      label: "Port of the Database"
-      description: | #
-      default: 3306
-      required: true
-      type: int
-    - variable: RC_MAIL
-      label: "Enable Mail service"
-      description: | #
-      default: false
-      required: true
-      type: boolean
