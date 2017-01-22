@@ -203,7 +203,7 @@ catalog:
       required: false
       type: string
     - variable: "RC_LDAP_ALLOWPWCHANGE"
-      labe: "LDAP allow Password change"
+      label: "LDAP allow Password change"
       description: | #
       default: true
       required: false
@@ -220,3 +220,33 @@ catalog:
       default: false
       required: true
       type: boolean
+    - variable: "RC_BUGPG"
+      label: "Backup PGP Keys"
+      description: | #
+      default: ""
+      required: false
+      type: string
+    - variable: "RC_BUREC"
+      label: "RC_BUREC"
+      description: | #
+      default: ""
+      required: false
+      type: string
+    - variable: "RC_BUDIR"
+      label: "Backup Destination"
+      description: | #
+      default: ""
+      required: false
+      type: string
+    - variable: "WS_DOMAIN"
+      label: "WS_DOMAIN"
+      description: | #
+      default: ""
+      required: false
+      type: string
+    - variable: "WS_PORT"
+      label: "WS_PORT"
+      description: | #
+      default: ""
+      required: false
+      type: int
