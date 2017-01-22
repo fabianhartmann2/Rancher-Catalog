@@ -87,4 +87,4 @@ catalog:
       description: | #
       default: ""
       required: false
-      type: string    
+      type: string
