@@ -52,3 +52,9 @@ catalog:
       default: 16777216
       required: yes
       type: int
+    - variable: "RC_DB_NAME"
+      label: "Database name"
+      description: Name ot the Database.
+      default: ratticDB
+      required: true
+      type: string
