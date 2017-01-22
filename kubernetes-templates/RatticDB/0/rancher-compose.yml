@@ -112,3 +112,9 @@ catalog:
       default: ""
       required: false
       type: string
+    - variable: "RC_MAIL_PW"
+      label: "Mailserver User Password"
+      description: | #
+      default: ""
+      required: false
+      type: password
