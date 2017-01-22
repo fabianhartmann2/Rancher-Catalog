@@ -118,3 +118,9 @@ catalog:
       default: ""
       required: false
       type: password
+    - variable: "RC_MAIL_FROM"
+      label: "Mail Sender"
+      description: | #
+      default: ""
+      required: false
+      type: string
