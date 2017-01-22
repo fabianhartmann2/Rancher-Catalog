@@ -160,3 +160,21 @@ catalog:
       default: false
       required: false
       type: boolean
+    - variable: "RC_LDAP_TLS"
+      label: "LDAP TLS"
+      description: | #
+      default: false
+      required: false
+      type: boolean
+    - variable: "RC_LDAP_USERBASE"
+      label: "LDAP User Base DN"
+      description: | #
+      default: ""
+      required: false
+      type: string
+    - variable: "RC_LDAP_USERFILTER"
+      label: "User Filter"
+      description: | #
+      default: "(uid=%(user)s)"
+      required: false
+      type: string
