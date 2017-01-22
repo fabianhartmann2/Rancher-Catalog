@@ -82,3 +82,9 @@ catalog:
       default: false
       required: true
       type: boolean
+    - variable: "RC_MAIL_FP"
+      label: "Mail FP"
+      description: | #
+      default: ""
+      required: false
+      type: string
