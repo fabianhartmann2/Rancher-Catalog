@@ -196,3 +196,27 @@ catalog:
       default: "GroupOfNamesType"
       required: false
       type: string
+    - variable: "RC_LDAP_STAFF"
+      label: "LDAP STAFF"
+      description: | #
+      default: ""
+      required: false
+      type: string
+    - variable: "RC_LDAP_ALLOWPWCHANGE"
+      labe: "LDAP allow Password change"
+      description: | #
+      default: true
+      required: false
+      type: boolean
+    - variable: "RC_LDAP_ALLOWEDHOST"
+      label: "LDAP allowed Hosts"
+      description: | #
+      default: "[‘ratticdbhost',]"
+      required: false
+      type: string
+    - variable: "RC_BU"
+      label: "Enable Backup"
+      description: | #
+      default: false
+      required: true
+      type: boolean
