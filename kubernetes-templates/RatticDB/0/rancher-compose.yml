@@ -34,3 +34,8 @@ catalog:
       options: # List of options if using type of `enum`
         - Europe/Paris
         - Europe/Berlin
+    - variable: "RC_PWEXP"
+      label: RC_PWEXP
+      description: | Defines how long a User Password is valid.
+      required: false
+      type: int
