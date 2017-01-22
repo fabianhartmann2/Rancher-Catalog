@@ -48,7 +48,6 @@ catalog:
       type: boolean
     - variable: "RC_ATTSIZE"
       label: "Define attachment file size"
-
       description: | Size of an attachment.
       default: "16777216"
       required: false
