@@ -130,3 +130,15 @@ catalog:
       default: false
       required: true
       type: boolean
+    - variable: "RC_LDAP_URI"
+      label: "Path to LDAP Server"
+      description: | #
+      default: ""
+      required: false
+      type: string
+    - variable: "RC_LDAP_BINDN"
+      label: "Bind DN"
+      description: | #
+      default: ""
+      required: fasle
+      type: string
