@@ -148,3 +148,15 @@ catalog:
       default: ""
       required: false
       type: password
+    - variable: "RC_LDAP_REQCERT"
+      label: "LDAP Requires certificate"
+      description: | #
+      default: false
+      required: false
+      type: boolean
+    - variable: "RC_LDAP_REF"
+      label: "RC_LDAP_REF"
+      description: | #
+      default: false
+      required: false
+      type: boolean
