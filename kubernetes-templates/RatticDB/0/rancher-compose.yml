@@ -67,6 +67,5 @@ catalog:
     - variable: "RC_DB_PW"
       label: "Database User password"
       description: Password ot the Database User.
-      default: ratticDB
       required: true
       type: password
