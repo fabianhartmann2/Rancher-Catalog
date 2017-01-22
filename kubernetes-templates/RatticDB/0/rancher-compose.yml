@@ -9,13 +9,14 @@ catalog:
   questions:
     - variable: "RC_DEBUG"
       label: RC_DEBUG
-      description: |
+      description: |  # The description of the question to show the user how to answer the question.
       default: false
       required: true
       type: boolean
     - variable: "RC_LOGLEVEL"
       label: RC_LOGLEVEL
-      description: | Keep in mind, a deeper log level generates more data.
+
+      description: | # The description of the question to show the user how to answer the question.
       default: "ERROR"
       required: false
       type: string
