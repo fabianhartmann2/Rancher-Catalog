@@ -46,27 +46,4 @@ catalog:
       default: false
       required: true
       type: boolean
-    - variable: "RC_ATTSIZE"
-      label: "Define attachment file size"
-      description: | Size of an attachment.
-      default: "16777216"
-      required: false
-      type: int
-    - variable: "RC_DB_NAME"
-      label: "Database name"
-      description: Name ot the Database.
-      default: ratticDB
-      required: true
-      type: string
-    - variable: "RC_DB_USER"
-      label: "Database User"
-      description: User ot the Database.
-      default: ratticUser
-      required: true
-      type: string
-    - variable: "RC_DB_PW"
-      label: "Database User password"
-      description: Password ot the Database User.
-      default: ratticDB
-      required: true
-      type: password
+      
