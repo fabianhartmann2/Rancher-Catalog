@@ -15,7 +15,6 @@ catalog:
       type: boolean
     - variable: "RC_LOGLEVEL"
       label: RC_LOGLEVEL
-
       description: | # The description of the question to show the user how to answer the question.
       default: "ERROR"
       required: false
