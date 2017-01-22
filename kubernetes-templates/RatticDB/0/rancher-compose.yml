@@ -58,3 +58,9 @@ catalog:
       default: ratticDB
       required: true
       type: string
+    - variable: "RC_DB_USER"
+      label: "Database User"
+      description: User ot the Database.
+      default: ratticUser
+      required: true
+      type: string
