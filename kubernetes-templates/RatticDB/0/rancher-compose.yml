@@ -173,8 +173,26 @@ catalog:
       required: false
       type: string
     - variable: "RC_LDAP_USERFILTER"
-      label: "User Filter"
+      label: "LDAP User Filter"
       description: | #
       default: "(uid=%(user)s)"
+      required: false
+      type: string
+    - variable: "RC_LDAP_GROUPBASE"
+      label: "LDAP Group Base DN"
+      description: | #
+      default: ""
+      required: false
+      type: string
+    - variable: "RC_LDAP_GROUPFILTER"
+      label: "LDAP Group Filter"
+      description: | #
+      default: "(objectClass=groupOfNames)"
+      required: false
+      type: string
+    - variable: "RC_LDAP_GROUPTYPE"
+      label: "LDAP Group Type"
+      description: | #
+      default: "GroupOfNamesType"
       required: false
       type: string
