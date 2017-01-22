@@ -41,7 +41,7 @@ catalog:
       required: true
       type: boolean
     - variable: "RC_PWEXPORT"
-      label: test
+      label: RC_PWEXPORT
       description: | # Allows the export of all PWs to a file.
       default: false
       required: true
