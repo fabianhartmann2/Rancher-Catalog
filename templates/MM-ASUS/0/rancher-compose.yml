@@ -1,6 +1,6 @@
 .catalog:
-  name: "Logstash"
-  version: "5.1.1-rancher1"
+  name: "MM-ASUS"
+  version: "1.0.0"
   description: "Logstash: Process Any Data, From Any Source"
   questions:
     - variable: "baseurl"
