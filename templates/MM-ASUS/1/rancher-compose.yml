@@ -1,0 +1,19 @@
+.catalog:
+  name: "MM-ASUS"
+  version: "1.0.1"
+  description: "Logstash: Process Any Data, From Any Source"
+  questions:
+    - variable: "baseurl"
+      description: |
+        Basis URL der Services.
+      label: "Basis URL"
+      required: true
+      type: string
+      default: "example.com"
+    - variable: "gitsetupsource"
+      description: |
+        URL to a GIT-Repo to setup the Service.
+      label: "GIT Source"
+      required: true
+      type: string
+      default: "https://github.com/MM-MacManagement/WebTemplates/archive/axonlab.tar.gz"
