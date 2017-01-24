@@ -3,7 +3,7 @@ services:
   manager:
     image: fabianhartmann/mm-reposado:develop
     environment:
-      VIRTUAL_HOST: masus.praxisservices.ch
+      VIRTUAL_HOST: masus.${baseurl}
     stdin_open: true
     volumes:
     - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO
@@ -21,7 +21,7 @@ services:
   setup:
     image: fabianhartmann/mm-setup:develop
     environment:
-      GITREPO: https://github.com/MM-MacManagement/WebTemplates/archive/axonlab.tar.gz
+      GITREPO: ${gitsetupsource}
     volumes:
     - /srv/MMServiceData:/srv/MMServiceData
     labels:
@@ -30,7 +30,7 @@ services:
   ASUS:
     image: fabianhartmann/mm-reposado:develop
     environment:
-      VIRTUAL_HOST: asus.praxisservices.ch
+      VIRTUAL_HOST: asus.${baseurl}
     stdin_open: true
     volumes:
     - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO

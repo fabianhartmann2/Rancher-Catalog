@@ -10,3 +10,10 @@
       required: true
       type: string
       default: "example.com"
+    - variable: "gitsetupsource"
+      description: |
+        URL to a GIT-Repo to setup the Service.
+      label: "GIT Source"
+      required: true
+      type: string
+      default: "https://github.com/MM-MacManagement/WebTemplates/archive/axonlab.tar.gz"
