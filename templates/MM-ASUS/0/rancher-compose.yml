@@ -1,0 +1,12 @@
+.catalog:
+  name: "Logstash"
+  version: "5.1.1-rancher1"
+  description: "Logstash: Process Any Data, From Any Source"
+  questions:
+    - variable: "baseurl"
+      description: |
+        Basis URL der Services.
+      label: "Basis URL"
+      required: true
+      type: string
+      default: "example.com"

@@ -1,0 +1,40 @@
+version: '2'
+services:
+  manager:
+    image: fabianhartmann/mm-reposado:develop
+    environment:
+      VIRTUAL_HOST: masus.praxisservices.ch
+    stdin_open: true
+    volumes:
+    - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      addtolb: 'true'
+  LB:
+    image: rancher/lb-service-haproxy:v0.4.9
+    ports:
+    - 80:80/tcp
+    labels:
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.container.create_agent: 'true'
+  setup:
+    image: fabianhartmann/mm-setup:develop
+    environment:
+      GITREPO: https://github.com/MM-MacManagement/WebTemplates/archive/axonlab.tar.gz
+    volumes:
+    - /srv/MMServiceData:/srv/MMServiceData
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
+  ASUS:
+    image: fabianhartmann/mm-reposado:develop
+    environment:
+      VIRTUAL_HOST: asus.praxisservices.ch
+    stdin_open: true
+    volumes:
+    - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      addtolb: 'true'
