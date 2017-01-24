@@ -1,0 +1,41 @@
+version: '2'
+services:
+  manager:
+    image: fabianhartmann/mm-reposado:develop
+    environment:
+      VIRTUAL_HOST: masus.${baseurl}
+    stdin_open: true
+    volumes:
+    - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      addtolb: 'true'
+  LB:
+    image: rancher/lb-service-haproxy:v0.4.9
+    ports:
+    - ${httpport}:80/tcp
+    - ${httpsport}:433/tcp
+    links:
+    - manager:manager
+    - asus:asus
+  setup:
+    image: fabianhartmann/mm-setup:develop
+    environment:
+      GITREPO: ${gitsetupsource}
+    volumes:
+    - /srv/MMServiceData:/srv/MMServiceData
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
+  asus:
+    image: fabianhartmann/mm-reposado:develop
+    environment:
+      VIRTUAL_HOST: asus.${baseurl}
+    stdin_open: true
+    volumes:
+    - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      addtolb: 'true'

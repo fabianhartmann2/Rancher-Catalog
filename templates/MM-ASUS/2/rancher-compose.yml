@@ -1,0 +1,56 @@
+.catalog:
+  name: "MM-ASUS"
+  version: "1.0.2"
+  description: "Logstash: Process Any Data, From Any Source"
+  questions:
+    - variable: "baseurl"
+      description: |
+        Basis URL der Services.
+      label: "Basis URL"
+      required: true
+      type: string
+      default: "example.com"
+    - variable: "httpport"
+      description: |
+        Exposed Port for HTTP.
+      label: "HTTP Port"
+      required: true
+      type: int
+      default: 80
+    - variable: "httpsport"
+      description: |
+        Exposed Port for TLS.
+      label: "HTTPS Port"
+      required: true
+      type: int
+      default: 443
+    - variable: "gitsetupsource"
+      description: |
+        URL to a GIT-Repo to setup the Service.
+      label: "GIT Source"
+      required: true
+      type: string
+      default: "https://github.com/MM-MacManagement/WebTemplates/archive/axonlab.tar.gz"
+LB:
+  lb_config:
+    certs: []
+    port_rules:
+    - hostname: masus.praxisservices.ch
+      priority: 1
+      protocol: http
+      service: manager
+      source_port: ${httpport}
+      target_port: 8089
+    - hostname: asus.praxisservices.ch
+      priority: 2
+      protocol: http
+      service: asus
+      source_port: ${httpport}
+      target_port: 8088
+  health_check:
+    healthy_threshold: 2
+    response_timeout: 2000
+    port: 42
+    unhealthy_threshold: 3
+    interval: 2000
+    strategy: recreate
