@@ -1,5 +1,6 @@
 name: "MM-ASUS"
-description: "Apple Software Update Service based on Reposado and Margarita"
+description: |
+  MacManagement Apple Software Update Service based on Reposado and Margarita.
 version: 1.0.0
 category: "Client Management"
 maintainer: Fabian Hartmann
