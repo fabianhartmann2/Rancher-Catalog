@@ -11,6 +11,15 @@ services:
     labels:
       io.rancher.container.pull_image: always
       addtolb: 'true'
+  setup:
+    image: fabianhartmann/mm-setup:develop
+    environment:
+      GITREPO: ${gitsetupsource}
+    volumes:
+    - /srv/MMServiceData:/srv/MMServiceData
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
   asus:
     image: fabianhartmann/mm-reposado:develop
     environment:
