@@ -3,13 +3,20 @@
   version: "1.0.3"
   description: "Logstash: Process Any Data, From Any Source"
   questions:
-    - variable: "baseurl"
+    - variable: "reposadourl"
       description: |
-        Basis URL der Services.
-      label: "Basis URL"
+        URL of Reposado (Catalog Repository).
+      label: "Reposado URL"
       required: true
       type: string
-      default: "example.com"
+      default: "asus.example.com"
+    - variable: "margaritaurl"
+      description: |
+        URL of Margarita (Management Service).
+      label: "Margarita URL"
+      required: true
+      type: string
+      default: "masus.example.com"
     - variable: "httpport"
       description: |
         Exposed Port for HTTP.
@@ -76,7 +83,7 @@
     - variable: "updatetypes"
       description: |
         Enter Grep pattern to identifie Updates that schould be added to all branches automatically.
-      label: "Auto add Patterns"
+      label: "Automatic Update Patterns"
       required: true
       type: string
       default: "XProtect\\|Core Suggestions Configuration Data\\|MRT Configuration Data\\|Gatekeeper Configuration Data\\|Incompatible Kernel Extension Configuration Data\\|System Integrity Protection Configuration Data\\|Security Update"
