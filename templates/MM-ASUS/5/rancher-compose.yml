@@ -1,6 +1,6 @@
 .catalog:
   name: "MM-ASUS"
-  version: "0.0.4-noLB"
+  version: "0.0.5"
   description: "Logstash: Process Any Data, From Any Source"
   questions:
     - variable: "reposadourl"
@@ -73,6 +73,13 @@
       required: true
       type: boolean
       default: true
+    - variable: "autoremovedeprecated"
+      description: |
+        Removes deprecated product from database.
+      label: "Auto remove deprecated Updates"
+      required: true
+      type: boolean
+      default: true
     - variable: "autosecurityupdates"
       description: |
         Set to True will enable Updates found by Auto add Patterns to all branches automatically.
@@ -91,13 +98,13 @@ LB:
   lb_config:
     certs: []
     port_rules:
-    - hostname: masus.praxisservices.ch
+    - hostname: ${margaritaurl}
       priority: 1
       protocol: http
       service: manager
       source_port: ${httpport}
       target_port: 8089
-    - hostname: asus.praxisservices.ch
+    - hostname: ${reposadourl}
       priority: 2
       protocol: http
       service: asus
