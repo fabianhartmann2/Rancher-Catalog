@@ -3,7 +3,12 @@ services:
   manager:
     image: fabianhartmann/mm-reposado:develop
     environment:
-      VIRTUAL_HOST: masus.${baseurl}
+      VIRTUAL_HOST: ${margaritaurl}
+      MODE: "MANAGER"
+      AUTODISABLEDEPRECATED: ${autodisabledeprecated}
+      PURGEDEPRECATED: ${autoremovedeprecated}
+      AUTOSECURITYUPDATES: ${autosecurityupdates}
+      AUTOUPDATEPATTERNS: ${updatetypes}
     stdin_open: true
     volumes:
     - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO
@@ -23,7 +28,8 @@ services:
   asus:
     image: fabianhartmann/mm-reposado:develop
     environment:
-      VIRTUAL_HOST: asus.${baseurl}
+      VIRTUAL_HOST: ${reposadourl}
+      MODE: "REPO"
     stdin_open: true
     volumes:
     - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO

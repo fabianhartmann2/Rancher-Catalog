@@ -1,7 +1,7 @@
 .catalog:
   name: "MM-ASUS"
   version: "0.0.5"
-  description: "Logstash: Process Any Data, From Any Source"
+  description: "MM-ASUS: Control Apple Udpates"
   questions:
     - variable: "reposadourl"
       description: |
@@ -82,7 +82,7 @@
       default: true
     - variable: "autosecurityupdates"
       description: |
-        Set to True will enable Updates found by Auto add Patterns to all branches automatically.
+        Set to True will enable Updates found by Automatic Update Patterns to all branches automatically.
       label: "Automatic Update"
       required: true
       type: boolean
