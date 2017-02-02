@@ -6,7 +6,6 @@ glusterfs-server:
     - glusterfs-data
   labels:
     io.rancher.container.hostname_override: container_name
-    io.rancher.scheduler.affinity:host_label_soft: type=glusterfs
     io.rancher.scheduler.global: 'true'
     io.rancher.container.create_agent: 'true'
     io.rancher.container.agent.role: environment
