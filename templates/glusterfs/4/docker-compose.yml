@@ -13,6 +13,11 @@ glusterfs-server:
 glusterfs-peer:
   image: rancher/glusterfs:v0.1.3
   net: 'container:glusterfs-server'
+  volumes:
+    - /lib/modules:/lib/modules:ro
+    - /proc:/host/proc
+    - /var/run:/host/var/run
+    - /etc/docker/plugins:/etc/docker/plugins
   volumes_from:
     - glusterfs-data
   labels:
