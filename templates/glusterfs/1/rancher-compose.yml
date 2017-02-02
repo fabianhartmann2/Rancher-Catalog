@@ -14,7 +14,6 @@ glusterfs-server:
   scale: 3
   metadata:
     volume_name: "${VOLUME_NAME}"
-glusterfs-server:
   storage_driver:
     name: rancher-gluster
     scope: environment
