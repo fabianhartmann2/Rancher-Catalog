@@ -1,0 +1,21 @@
+.catalog:
+  name: "GlusterFS"
+  version: "3.7.6-lnb1"
+  description: "Gluster FS (3x) replicated volume"
+  uuid: glusterfs-0
+  questions:
+    - variable: "VOLUME_NAME"
+      description: "Name to give the Gluster volume"
+      label: "Volume Name"
+      required: true
+      default: "vol"
+      type: "string"
+glusterfs-server:
+  scale: 3
+  metadata:
+    volume_name: "${VOLUME_NAME}"
+gluster-driver:
+  storage_driver:
+    name: rancher-gluster
+    scope: environment
+    volume_access_mode: multiHostRW
