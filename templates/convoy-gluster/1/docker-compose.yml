@@ -9,6 +9,7 @@ convoy-gluster:
     - /proc:/host/proc
     - /var/run:/host/var/run
     - /etc/docker/plugins:/etc/docker/plugins
+    - /var/run/docker/libcontainerd:/host/var/run/docker/execdriver/native
   external_links:
     - "${GLUSTERFS_SERVICE}:glusterfs"
   image: rancher/convoy-agent:v0.3.0
