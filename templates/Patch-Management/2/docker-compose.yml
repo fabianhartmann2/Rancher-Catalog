@@ -1,0 +1,40 @@
+version: '2'
+services:
+  mgnt:
+    image: fabianhartmann/mm-pm-mgnt:develop
+    environment:
+      VIRTUAL_HOST: ${margaritaurl}
+    volumes:
+    - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO
+    labels:
+      io.rancher.container.pull_image: always
+      addtolb: 'true'
+  setup:
+    image: fabianhartmann/mm-pm-setup:develop
+    environment:
+      GITREPO: ${gitsetupsource}
+    volumes:
+    - /srv/MMServiceData:/srv/MMServiceData
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.start_once: 'true'
+  repo:
+    image: fabianhartmann/mm-pm-repo:develop
+    environment:
+      VIRTUAL_HOST: ${reposadourl}
+    volumes:
+    - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO
+    labels:
+      io.rancher.container.pull_image: always
+      addtolb: 'true'
+  manager:
+    image: fabianhartmann/mm-pm-manager:develop
+    environment:
+      AUTODISABLEDEPRECATED: ${autodisabledeprecated}
+      PURGEDEPRECATED: ${autoremovedeprecated}
+      AUTOSECURITYUPDATES: ${autosecurityupdates}
+      AUTOUPDATEPATTERNS: ${updatetypes}
+    volumes:
+    - /srv/MMServiceData/MM-REPOSADO:/srv/MMServiceData/MM-REPOSADO
+    labels:
+      io.rancher.container.pull_image: always
