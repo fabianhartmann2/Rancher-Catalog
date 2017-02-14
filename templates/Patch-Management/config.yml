@@ -1,0 +1,8 @@
+name: "MM-ASUS"
+description: |
+  MacManagement - Patch Management
+  Apple Software Update Service based on Reposado and Margarita.
+version: 1.0.0
+category: "Client Management"
+maintainer: Fabian Hartmann
+projectURL: https://github.com/MM-MacManagement/Patch-Management
