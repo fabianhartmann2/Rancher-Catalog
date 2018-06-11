@@ -1,6 +1,0 @@
-name: Kafka
-description: |
-  A high-throughput distributed messaging system
-version: v2
-category: Frameworks
-minimum_rancher_version: v1.0.0

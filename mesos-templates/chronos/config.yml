@@ -1,6 +1,0 @@
-name: Chronos
-description: |
-  Distributed, fault-tolerant cron replacement
-version: v2
-category: Frameworks
-minimum_rancher_version: v1.0.0

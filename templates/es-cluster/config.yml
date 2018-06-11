@@ -1,5 +1,0 @@
-name: Elasticsearch Cluster 6.2.4
-description: |
-  Elasticsearch, you know for search!
-version: 6.2.4-rancher1
-category: ELK

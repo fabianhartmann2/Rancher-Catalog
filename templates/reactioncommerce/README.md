@@ -1,1 +1,0 @@
-#[ReactionCommerce](http://reactioncommerce.com/)

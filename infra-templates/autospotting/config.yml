@@ -1,5 +1,0 @@
-name: AutoSpotting
-description: |
-  Replaces AWS On-Demand instances with cheaper Spot-Instances where possible
-version: v0.1.0
-category: Infrastructure Services
