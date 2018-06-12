@@ -116,19 +116,25 @@ questions:
   type: password
   label: Database Password
   group: "DB Settings"
-- variable: db.detailedsettings
+- variable: persistence
   default: "false"
-  description: "Configure Detailed DB Settings"
+  description: "Enable persistent volume for SAL"
   type: boolean
   required: true
-  label: Detailed DB Settings
-  group: "Detailed DB Settings"
+  label: SAL Persistent Volume Enabled
+  show_subquestion_if: true
+  group: "Storage"
   subquestions:
-  - variable: db.
+  - variable: persistence.size
     default: "8Gi"
-    description: "MariaDB Persistent Volume Size"
+    description: "SAL Persistent Volume Size"
     type: string
-    label: MariaDB Volume Size
+    label: SAL Volume Size
+  - variable: persistence.storageClass
+    default: ""
+    description: "If undefined or null, uses the default StorageClass. Default to null"
+    type: storageclass
+    label: Default StorageClass for SAL
 - variable: customdns
   default: "false"
   description: "Add a custom Domain. (needs manual config by the Firewall Team!)"
