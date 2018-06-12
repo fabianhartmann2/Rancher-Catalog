@@ -59,6 +59,6 @@ spec:
                 name: {{ .Release.Name }}
                 key: DB_PASS
           - name: DB_PORT_5432_TCP_ADDR
-            value: ******
+            value: {{ .Values.database.port }}
           - name: DB_PORT_5432_TCP_PORT
             value: {{ .Values.database.port }}
