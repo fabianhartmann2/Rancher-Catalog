@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sal-webapp
+spec:
+  selector:
+    matchLabels:
+      app: sal-webapp
+      tier: backend
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sal-webapp
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: sal
+          image: "macadmins/sal:3.0.3"
+          env:
+          - name: ADMIN_PASS
+            value: "AdminPW"
+          - name: DB_NAME
+            value: "SalDB"
+          - name: DB_USER
+            value: "SalUser"
+          - name: DB_PASS
+            value: "MySecret"
+          - name: DB_PORT_5432_TCP_ADDR
+            value: "db"
+          - name: DB_PORT_5432_TCP_PORT
+            value: "5432"
+          ports:
+            - name: http
+              containerPort: 8000

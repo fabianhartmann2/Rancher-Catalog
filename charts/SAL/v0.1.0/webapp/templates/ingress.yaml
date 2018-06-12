@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sal-webapp
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: sal.dq.solutions
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: sal-webapp
+          servicePort: 80
