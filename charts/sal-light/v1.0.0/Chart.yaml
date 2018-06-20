@@ -1,5 +1,10 @@
 apiVersion: v1
 appVersion: "1.0"
-description: A Helm chart for Kubernetes
+description: SAL Monitoring
 name: sal-light
 version: 0.1.0
+icon: https://image.slidesharecdn.com/challengesinamicroservicesage-170505115849/95/challenges-in-a-microservices-age-monitoring-logging-and-tracing-on-red-hat-openshift-68-638.jpg
+keywords:
+- MDM
+sources:
+- https://github.com/tjm-jimmy/sal
