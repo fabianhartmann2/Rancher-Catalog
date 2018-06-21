@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: macadmins
+  repository: macadmins/sal
   tag: 3.0.3
   pullPolicy: IfNotPresent
 
