@@ -35,6 +35,31 @@ spec:
             httpGet:
               path: /
               port: http
+          env:
+          - name: ADMIN_PASS
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}
+                key: ADMIN_PASS
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}
+                key: DB_NAME
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}
+                key: DB_USER
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}
+                key: DB_PASS
+          - name: DB_PORT_5432_TCP_ADDR
+            value: {{ .Values.database.port }}
+          - name: DB_PORT_5432_TCP_PORT
+            value: {{ .Values.database.port }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
