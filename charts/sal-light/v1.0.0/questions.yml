@@ -16,9 +16,37 @@ questions:
     type: hostname
     required: true
     label: Hostname
-- variable: adminPassword
+- variable: sal.adminPassword
   default: ""
   description: "password will be auto-generated if not specified"
   type: password
   label: Sal Admin Password
   group: "SAL Settings"
+- variable: sal.debug
+  default: "false"
+  description: "Enable SAL debug mode"
+  type: boolean
+  required: true
+  label: Debug Mode
+  group: "SAL Settings"
+- variable: sal.bruteforceprotection
+  default: "false"
+  description: "Enable SAL bruteforce protection"
+  type: boolean
+  required: true
+  show_subquestion_if: true
+  label: Bruteforce
+  group: "SAL Settings"
+  subquestions:
+    - variable: sal.bruteforcecooloff
+      description: "Duration in hours to wait after reenable the locked account"
+      label: Cooloff
+      required: true
+      type: string
+      default: "1"
+    - variable: sal.bruteforcelimit
+      description: "How many failed attemts until the account is locked"
+      label: Failed attemts
+      required: true
+      type: string
+      default: "10"

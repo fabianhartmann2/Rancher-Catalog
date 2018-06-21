@@ -46,3 +46,10 @@ affinity: {}
 
 database:
   port: 5432
+
+sal:
+  displayname: SAL
+  timezone:
+    debug: false
+    bruteforcecooloff: 1
+    bruteforcelimit: 5
