@@ -11,8 +11,14 @@ questions:
   group: "Services and Load Balancing"
   subquestions:
   - variable: ingress.hosts[0].name
-    default: "xip.io"
-    description: "Hostname to your WordPress installation"
+    default: "sal.dq.solutions"
+    description: "Hostname to your SAL installation"
     type: hostname
     required: true
     label: Hostname
+- variable: adminPassword
+  default: ""
+  description: "password will be auto-generated if not specified"
+  type: password
+  label: Sal Admin Password
+  group: "SAL Settings"

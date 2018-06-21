@@ -39,22 +39,22 @@ spec:
           - name: ADMIN_PASS
             valueFrom:
               secretKeyRef:
-                name: {{ .Release.Name }}
+                name: {{ template "fullname" . }}
                 key: ADMIN_PASS
           - name: DB_NAME
             valueFrom:
               secretKeyRef:
-                name: {{ .Release.Name }}
+                name: {{ template "fullname" . }}
                 key: DB_NAME
           - name: DB_USER
             valueFrom:
               secretKeyRef:
-                name: {{ .Release.Name }}
+                name: {{ template "fullname" . }}
                 key: DB_USER
           - name: DB_PASS
             valueFrom:
               secretKeyRef:
-                name: {{ .Release.Name }}
+                name: {{ template "fullname" . }}
                 key: DB_PASS
           - name: DB_PORT_5432_TCP_ADDR
             value: {{ .Values.database.port }}

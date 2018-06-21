@@ -43,3 +43,6 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+database:
+  port: 5432
