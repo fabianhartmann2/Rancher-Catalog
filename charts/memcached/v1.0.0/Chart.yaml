@@ -16,6 +16,6 @@ name: memcached
 #kubeVersion:
 sources:
 - https://github.com/memcached/memcached
-version: 2.2.0
+version: 2.3.0
 appVersion: 1.5.10
 deprecated: false
