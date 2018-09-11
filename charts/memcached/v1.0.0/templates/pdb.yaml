@@ -1,0 +1,21 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ template "memcached.fullname" . }}
+  labels:
+    dqservice: hostedmemcached
+    cust: "{{ .Values.custnr }}"
+    instanceid: "{{ .Values.instanceid }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "memcached.fullname" . }}
+      cust: "{{ .Values.custnr }}"
+      instanceid: "{{ .Values.instanceid }}"
+      chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+      release: "{{ .Release.Name }}"
+      heritage: "{{ .Release.Service }}"
+  minAvailable: {{ .Values.pdbMinAvailable }}
