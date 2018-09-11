@@ -1,0 +1,64 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "memcached.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: "{{ template "memcached.fullname" . }}"
+    chart: "{{ .Chart.Name }}"
+    release: "{{ .Release.Name }}"
+    dqservice: hostedmemcached
+    cust: "{{ .Values.custnr }}"
+    instanceid: "{{ .Values.instanceid }}"
+spec:
+  replicas: {{ .Values.replicas }}
+  template:
+    metadata:
+      labels:
+        app: "{{ template "memcached.fullname" . }}"
+        dqservice: hostedmemcached
+        cust: "{{ .Values.custnr }}"
+        instanceid: "{{ .Values.instanceid }}"
+        chart: "{{ .Chart.Name }}"
+        release: "{{ .Release.Name }}"
+    spec:
+      {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+      {{- end }}
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
+      {{- if .Values.tolerations }}
+      tolerations:
+{{ toYaml .Values.tolerations | indent 8 }}
+      {{- end }}
+      containers:
+      - name: {{ template "memcached.fullname" . }}
+        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        ports:
+        - name: memcache
+          containerPort: 11211
+        livenessProbe:
+          tcpSocket:
+            port: memcache
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+        readinessProbe:
+          tcpSocket:
+            port: memcache
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+      {{- if .Values.metrics.enabled }}
+      - name: metrics
+        image: {{ .Values.metrics.image }}
+        imagePullPolicy: {{ default "" .Values.metrics.imagePullPolicy | quote }}
+        ports:
+        - name: metrics
+          containerPort: 9150
+        resources:
+{{ toYaml .Values.metrics.resources | indent 10 }}
+{{- end }}
