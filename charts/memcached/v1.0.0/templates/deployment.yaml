@@ -4,7 +4,7 @@ metadata:
   name: {{ template "memcached.fullname" . }}
   namespace: "{{ .Values.namespace }}"
   labels:
-    app: "{{ template ""memcached.fullname" . }}"
+    app: "{{ template "memcached.fullname" . }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       labels:
-        app: "{{ template ""memcached.fullname" . }}"
+        app: "{{ template "memcached.fullname" . }}"
         dqservice: hostedjamfpro
         cust: "{{ .Values.custnr }}"
         instanceid: "{{ .Values.instanceid }}"
@@ -34,7 +34,7 @@ spec:
 {{ toYaml .Values.tolerations | indent 8 }}
       {{- end }}
       containers:
-      - name: {{ template ""memcached.fullname" . }}
+      - name: {{ template "memcached.fullname" . }}
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
         ports:
         - containerPort: 11211
