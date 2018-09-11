@@ -1,0 +1,69 @@
+
+## memcached image repository
+image: "memcached"
+## memcached image version
+## ref: https://hub.docker.com/r/library/memcached/tags/
+##
+imageTag: "1.5.10-alpine"
+
+## Specify a imagePullPolicy
+## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
+## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+##
+# imagePullPolicy:
+
+## Specify imagePullSecrets
+## ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+##
+# imagePullSecrets: myregistrykey
+
+## Number of replicas to create
+replicas: 3
+
+## Pod disruption budget minAvailable count
+## Ensure this value is lower than replicaCount in order to allow a worker
+## node to drain successfully
+pdbMinAvailable: 1
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 100m
+
+service:
+  type: ClusterIP
+  port: 11211
+  externalIPs: []
+
+metrics:
+  ## Expose memcached metrics in Prometheus format
+  enabled: true
+
+  ## Memcached exporter image and tag
+  image: quay.io/prometheus/memcached-exporter:v0.4.1
+
+  ## Specify a imagePullPolicy
+  ## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
+  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ##
+  # imagePullPolicy: IfNotPresent
+
+  ## Configure resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources: {}
+
+## Customer number from DQ Tool
+custnr: "0000"
+
+## UID ot the instance
+instanceid: "4E4888E3-E03D-4489-85F6-8211F90303AD"
+## Node labels and tolerations for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
+nodeSelector: {}
+tolerations: []
+affinity: {}
