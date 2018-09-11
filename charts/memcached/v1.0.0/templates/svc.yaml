@@ -18,3 +18,4 @@ spec:
     dqservice: hostedjamfpro
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
+  minAvailable: {{ .Values.pdbMinAvailable }}
