@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: {{ template "memcached.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
     app: "{{ template "memcached.fullname" . }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"

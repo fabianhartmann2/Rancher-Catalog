@@ -6,6 +6,7 @@ metadata:
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
   name: {{ template "memcached.fullname" . }}
+  namespace: {{ .Release.Namespace }}
 spec:
   clusterIP: None  # Headless service
   ports:
