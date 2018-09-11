@@ -23,7 +23,7 @@ replicas: 2
 ## Pod disruption budget minAvailable count
 ## Ensure this value is lower than replicaCount in order to allow a worker
 ## node to drain successfully
-pdbMinAvailable: 2
+pdbMinAvailable: 1
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
