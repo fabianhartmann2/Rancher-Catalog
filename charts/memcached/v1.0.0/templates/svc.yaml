@@ -17,8 +17,10 @@ spec:
     protocol: TCP
     targetPort: 11211
   selector:
-    app: {{ template "memcached.fullname" . }}
+    app: "{{ template "memcached.fullname" . }}"
     dqservice: hostedmemcached
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
-  minAvailable: {{ .Values.pdbMinAvailable }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"

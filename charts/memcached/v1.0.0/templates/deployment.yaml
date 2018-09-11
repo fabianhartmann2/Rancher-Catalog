@@ -11,9 +11,6 @@ metadata:
     dqservice: hostedmemcached
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
 spec:
   replicas: {{ .Values.replicas }}
   template:
