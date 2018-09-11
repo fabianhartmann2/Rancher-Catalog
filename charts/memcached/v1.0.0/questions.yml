@@ -1,16 +1,22 @@
+categories:
+- jamf
+- JamfPro
+- Managed Service
+- Memcached
+- Data Quest AG
 questions:
 - variable: custnr
   default: ""
   description: "Customer Number from CRM"
   type: string
-  label: Customer Nr
+  label: "Customer Nr"
   group: "Settings"
   required: true
 - variable: instanceid
   default: ""
   description: "UID for this instance to be identified by the CRM"
   type: string
-  label: Instance UID
+  label: "Instance UID"
   group: "Settings"
   required: true
   valid_chars: [0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
