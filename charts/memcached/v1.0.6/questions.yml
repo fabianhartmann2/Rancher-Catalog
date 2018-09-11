@@ -1,0 +1,36 @@
+categories:
+- jamf
+- JamfPro
+- Managed Service
+- Memcached
+- Data Quest AG
+questions:
+- variable: custnr
+  default: ""
+  description: "Customer Number from CRM"
+  type: string
+  label: "Customer Nr"
+  group: "Settings"
+  required: true
+- variable: instanceid
+  default: ""
+  description: "UID for this instance to be identified by the CRM"
+  type: string
+  label: "Instance UID"
+  group: "Settings"
+  required: true
+  valid_chars: [0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+- variable: replicas
+  default: 2
+  description: "Number of nodes to create in the cluster"
+  type: int
+  label: Replicas
+  group: "Settings"
+- variable: metrics.enabled
+  default: true
+  description: "Enable metrics to use with Prometieus"
+  type: boolean
+  label: Metrics
+  group: "Settings"
+
+# https://rancher.com/docs/rancher/v2.x/en/catalog/custom/#rancher-chart-additional-files
