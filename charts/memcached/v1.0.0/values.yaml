@@ -40,7 +40,7 @@ service:
 
 metrics:
   ## Expose memcached metrics in Prometheus format
-  enabled: false
+  enabled: true
 
   ## Memcached exporter image and tag
   image: quay.io/prometheus/memcached-exporter:v0.4.1
