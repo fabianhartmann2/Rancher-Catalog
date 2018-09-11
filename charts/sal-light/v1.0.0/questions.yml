@@ -30,7 +30,7 @@ questions:
   label: Debug Mode
   group: "SAL Settings"
 - variable: sal.bruteforceprotection
-  default: "false"
+  default: "true"
   description: "Enable SAL bruteforce protection"
   type: boolean
   required: true

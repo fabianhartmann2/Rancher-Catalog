@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: "{{ template "memcached.fullname" . }}"
+  namespace: "238896"
+  labels:
+    app: "{{ template "memcached.fullname" . }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+    dqservice: hostedjamfpro
+    cust: "{{ .Values.custnr }}"
+    instanceid: "{{ .Values.instanceid }}"
+spec:
+  replicas: {{ .Values.replicas }}
+  template:
+    metadata:
+      labels:
+        app: "{{ template "memcached.fullname" . }}"
+        dqservice: hostedjamfpro
+        cust: "{{ .Values.custnr }}"
+        instanceid: "{{ .Values.instanceid }}"
+    spec:
+      {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+      {{- end }}
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
+      {{- if .Values.tolerations }}
+      tolerations:
+{{ toYaml .Values.tolerations | indent 8 }}
+      {{- end }}
+      containers:
+      - name: {{ template "memcached.fullname" . }}
+        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        ports:
+        - containerPort: 11211
+        recources:
+{{ toYaml .Values.resources | indent 10 }}
