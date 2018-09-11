@@ -1,3 +1,4 @@
+apiVersion: v1
 name: wordpress2
 version: 1.0.5
 appVersion: 4.9.5
