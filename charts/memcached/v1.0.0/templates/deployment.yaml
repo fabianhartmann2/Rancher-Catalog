@@ -38,5 +38,5 @@ spec:
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
         ports:
         - containerPort: 11211
-        recources:
+        resources:
 {{ toYaml .Values.resources | indent 10 }}
