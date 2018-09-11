@@ -8,7 +8,6 @@ metadata:
     instanceid: "{{ .Values.instanceid }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
 spec:
   selector:
     matchLabels:
@@ -17,5 +16,4 @@ spec:
       instanceid: "{{ .Values.instanceid }}"
       chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
       release: "{{ .Release.Name }}"
-      heritage: "{{ .Release.Service }}"
   minAvailable: {{ .Values.pdbMinAvailable }}

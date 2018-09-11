@@ -7,7 +7,6 @@ metadata:
     app: "{{ template "memcached.fullname" . }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
     dqservice: hostedmemcached
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
@@ -22,7 +21,6 @@ spec:
         instanceid: "{{ .Values.instanceid }}"
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         release: "{{ .Release.Name }}"
-        heritage: "{{ .Release.Service }}"
     spec:
       {{- if .Values.affinity }}
       affinity:
