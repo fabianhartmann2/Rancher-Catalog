@@ -21,7 +21,6 @@ questions:
   required: false
   valid_chars: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
 - variable: replicas
-  default: 2
   description: "Number of nodes to create in the cluster"
   type: int
   label: Replicas

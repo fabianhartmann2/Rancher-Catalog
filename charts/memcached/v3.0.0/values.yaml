@@ -18,7 +18,7 @@ imageTag: "1.5.10"
 # imagePullSecrets: myregistrykey
 
 ## Number of replicas to create
-replicas: 2
+replicas: 3
 
 ## Pod disruption budget minAvailable count
 ## Ensure this value is lower than replicaCount in order to allow a worker
