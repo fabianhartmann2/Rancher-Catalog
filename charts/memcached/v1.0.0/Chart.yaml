@@ -5,13 +5,11 @@ appVersion: 4.9.5
 description: Web publishing platform for building blogs and websites.
 icon: https://bitnami.com/assets/stacks/wordpress/img/wordpress-stack-220x234.png
 keywords:
-- wordpress
-- cms
-- blog
-- http
-- web
-- application
-- php
+- jamf
+- JamfPro
+- Managed Service
+- Memcached
+- Data Quest AG
 home: http://www.wordpress.com/
 sources:
 - https://github.com/bitnami/bitnami-docker-wordpress
