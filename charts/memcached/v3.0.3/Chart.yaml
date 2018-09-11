@@ -2,7 +2,7 @@ apiVersion: v1
 description: This is a template to run a high available memcached instance.
 engine: gotpl
 home: https://memcached.org
-icon: https://upload.wikimedia.org/wikipedia/en/thumb/2/27/Memcached.svg/200px-Memcached.svg.png
+icon: https://cdn.iconscout.com/public/images/icon/free/png-256/memcached-company-brand-logo-30dd33911b1dc26b-256x256.png
 keywords:
 - jamf
 - JamfPro
