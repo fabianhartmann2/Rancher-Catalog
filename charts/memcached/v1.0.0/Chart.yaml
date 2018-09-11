@@ -1,21 +1,20 @@
-apiVersion: v1
-description: Memcached
-engine: gotpl
-home: https://memcached.org
-icon: https://upload.wikimedia.org/wikipedia/en/thumb/2/27/Memcached.svg/200px-Memcached.svg.png
+name: wordpress
+version: 1.0.5
+appVersion: 4.9.5
+description: Web publishing platform for building blogs and websites.
+icon: https://bitnami.com/assets/stacks/wordpress/img/wordpress-stack-220x234.png
 keywords:
-- jamf
-- JamfPro
-- Managed Service
-- Memcached
-- Data Quest AG
-maintainers:
-- name: Fabian Hartmann
-  email: fhartmann@dataquest.ch
-name: Memcached
-#kubeVersion:
+- wordpress
+- cms
+- blog
+- http
+- web
+- application
+- php
+home: http://www.wordpress.com/
 sources:
-- https://github.com/memcached/memcached
-version: 1.0.0
-appVersion: 1.5.9
-deprecated: false
+- https://github.com/bitnami/bitnami-docker-wordpress
+maintainers:
+- name: bitnami-bot
+  email: containers@bitnami.com
+engine: gotpl
