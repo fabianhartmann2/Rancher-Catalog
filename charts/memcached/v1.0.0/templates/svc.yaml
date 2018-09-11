@@ -5,7 +5,7 @@ metadata:
     dqservice: hostedjamfpro
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
-  name: {{ template "fullname" . }}-srv
+  name: {{ template ".fullname" . }}-srv
   namespace: "{{ .Values.namespace }}"
 spec:
   clusterIP: None  # Headless service
