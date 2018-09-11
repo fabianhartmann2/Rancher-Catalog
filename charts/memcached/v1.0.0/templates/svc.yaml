@@ -14,7 +14,7 @@ spec:
     protocol: TCP
     targetPort: 11211
   selector:
-    app: {{ template "fullname" . }}
+    app: {{ template ""memcached.fullname" . }}
     dqservice: hostedjamfpro
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
