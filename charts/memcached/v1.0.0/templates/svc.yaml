@@ -5,7 +5,7 @@ metadata:
     dqservice: hostedjamfpro
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
-  name: {{ template "memcached.fullname" . }}-srv
+  name: {{ template "fullname" . }}-srv
   namespace: "{{ .Values.namespace }}"
 spec:
   clusterIP: None  # Headless service
@@ -14,7 +14,7 @@ spec:
     protocol: TCP
     targetPort: 11211
   selector:
-    app: {{ template "memcached.fullname" . }}
+    app: {{ template "fullname" . }}
     dqservice: hostedjamfpro
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
