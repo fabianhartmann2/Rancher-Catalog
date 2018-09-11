@@ -32,5 +32,3 @@ description: "Enable metrics to use with Prometieus"
 type: boolean
 label: Metrics
 group: "Settings"
-
-# https://rancher.com/docs/rancher/v2.x/en/catalog/custom/#rancher-chart-additional-files
