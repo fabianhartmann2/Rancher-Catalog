@@ -4,7 +4,7 @@ image: "memcached"
 ## memcached image version
 ## ref: https://hub.docker.com/r/library/memcached/tags/
 ##
-imageTag: "1.5.10-alpine"
+imageTag: "1.5.10"
 
 ## Specify a imagePullPolicy
 ## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
