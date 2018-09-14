@@ -61,37 +61,10 @@ questions:
 - variable: jamfpro.preconfig.mail
   description: "Please enter the Customers Admin Mail."
   type: string
-  label: "Jamf Pro admin Mail"
+  label: "Jamf Pro Admin Mail"
   group: "Jamf Pro Configuration"
 - variable: jamfpro.preconfig.companyname
   description: "Please enter the Customer Name."
   type: string
   label: "Company Name"
   group: "Jamf Pro Configuration"
-- variable: jamfpro.preconfig.enabled
-  default: true
-  description: "Select if you'd like to preconfigure this Jamf Pro Instalnce."
-  type: boolean
-  label: "Preconfiguration"
-  group: "Jamf Pro Configuration"
-  show_subquestion_if: true
-  subquestions:
-  - variable: jamfpro.preconfig.standard
-    default: true
-    description: "Select yes if you want to use the standard configuration. (Described here)"
-    type: boolean
-    label: "Default Configuration"
-    group: "Jamf Pro Configuration"
-  - variable: jamfpro.preconfig.custom
-    default: true
-    description: "Select yes if you want to use a custom configuration. (Described here)"
-    type: boolean
-    label: "Custom Configuration"
-    group: "Jamf Pro Configuration"
-    show_subquestion_if: true
-    - variable: jamfpro.preconfig.customgit
-      default: true
-      description: "Please enter the GIT Repo to get the configuration."
-      type: string
-      label: "Custom GIT"
-      group: "Jamf Pro Configuration"
