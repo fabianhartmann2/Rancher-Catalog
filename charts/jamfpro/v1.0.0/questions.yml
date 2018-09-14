@@ -80,16 +80,3 @@ questions:
     type: boolean
     label: "Default Configuration"
     group: "Jamf Pro Configuration"
-  - variable: jamfpro.preconfig.custom
-    default: true
-    description: "Select yes if you want to use a custom configuration. (Described here)"
-    type: boolean
-    label: "Custom Configuration"
-    group: "Jamf Pro Configuration"
-    show_subquestion_if: true
-    - variable: jamfpro.preconfig.customgit
-      default: true
-      description: "Please enter the GIT Repo to get the configuration."
-      type: string
-      label: "Custom GIT"
-      group: "Jamf Pro Configuration"
