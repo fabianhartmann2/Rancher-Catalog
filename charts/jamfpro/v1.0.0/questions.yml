@@ -40,5 +40,5 @@ questions:
   - variable: jamfpro.customdomain.fqdn
     description: "Enter the FQDN on which Jamf Pro should be served."
     type: string
-    label: FQDN
+    label: "FQDN"
     group: "Hosting"
