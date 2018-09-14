@@ -58,19 +58,3 @@ questions:
     type: boolean
     label: "Custom Domain"
     group: "Hosting"
-    show_subquestion_if: true
-    - variable: jamfpro.customdomain.fqdn
-      description: "Enter the FQDN on which Jamf Pro should be served."
-      type: string
-      label: FQDN
-      group: "Hosting"
-    - variable: jamfpro.customdomain.crt
-      escription: "Paste in the certificate containing its chain as a Base64 Encoded string"
-      type: string
-      label: Certificate
-      group: "Hosting"
-    - variable: jamfpro.customdomain.key
-      escription: "Paste in the certificate key as a Base64 Encoded string"
-      type: string
-      label: "Private Key"
-      group: "Hosting"
