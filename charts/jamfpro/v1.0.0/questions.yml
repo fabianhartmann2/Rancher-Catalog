@@ -36,3 +36,9 @@ questions:
   type: boolean
   label: "Custom Domain"
   group: "Hosting"
+  show_subquestion_if: true
+  - variable: jamfpro.customdomain.fqdn
+    description: "Enter the FQDN on which Jamf Pro should be served."
+    type: string
+    label: FQDN
+    group: "Hosting"
