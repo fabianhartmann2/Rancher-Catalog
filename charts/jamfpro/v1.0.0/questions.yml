@@ -18,3 +18,15 @@ questions:
   label: "DB User PW"
   group: "DB Settings"
   required: true
+- variable: db.rootpw
+  description: "Password for the MySQL Root-User."
+  type: password
+  label: "MySQL Root PW"
+  group: "DB Settings"
+  required: true
+- variable: jamfpro.cacheenabled
+  default: true
+  description: "If true, memcached is enabled. (recomended)"
+  type: boolean
+  label: "Caching"
+  group: "Hosting"
