@@ -75,6 +75,7 @@ questions:
   label: "Preconfiguration"
   group: "Jamf Pro Configuration"
   show_subquestion_if: true
+  subquestions:
   - variable: jamfpro.preconfig.standard
     default: true
     description: "Select yes if you want to use the standard configuration. (Described here)"
