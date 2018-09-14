@@ -54,6 +54,32 @@ logs:
       memory: 10Mi
       cpu: 50m
 
+## Database Settings and credentials
+db:
+  name: jamfdatabasename
+  port: 3306
+  user: hostedjamfdatabaseuser
+  userpw: IamVerryUnsecure
+  rootpw: Iamevenmoreunsecure1234
+
+## jamf Pro Settings
+jamfpro:
+  cacheenabled: true
+  customdomain:
+    enabled: false
+    fqdn:
+    crt:
+    key:
+## Jamf Pro preconfiguration can be done by a standard template defined, by a custom template for the customer, or both
+  preconfig:
+    license:
+    mail:
+    companyname:
+    standard: true
+    standardgit:
+    custom: false
+    customgit:
+
 ## Customer number from DQ Tool
 custnr: "0000"
 
