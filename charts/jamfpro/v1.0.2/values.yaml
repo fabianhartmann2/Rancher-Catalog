@@ -123,7 +123,7 @@ jamfpro:
 custnr: "0000"
 
 ## UID ot the instance
-instanceid: "4E4888E3-E03D-4489-85F6-8211F90303AD"
+instanceid: "00000000-0000-0000-0000-000000000000"
 ## Node labels and tolerations for pod assignment
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
