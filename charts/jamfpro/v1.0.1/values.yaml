@@ -82,14 +82,17 @@ db:
   image: "mysql/mysql-server"
   imageTag: "5.6"
   livenessProbe:
-    initialDelaySeconds: 60
+    initialDelaySeconds: 20
     periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
   readinessProbe:
     initialDelaySeconds: 30
     periodSeconds: 10
     timeoutSeconds: 5
     failureThreshold: 6
-    successThreshold: 2
+    successThreshold: 1
   settings:
     logconsole: true
 
@@ -110,18 +113,18 @@ jamfpro:
     standardgit:
     custom: false
     customgit:
-  readinessProbe:
-    initialDelaySeconds: 20
-    periodSeconds: 5
-    timeoutSeconds: 2
-    failureThreshold: 6
-    successThreshold: 3
   livenessProbe:
-    initialDelaySeconds: 20
-    periodSeconds: 5
+    initialDelaySeconds: 40
+    periodSeconds: 10
+    successThreshold: 1
     timeoutSeconds: 1
+    failureThreshold: 2
+  readinessProbe:
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
     failureThreshold: 6
-    successThreshold: 3
+    successThreshold: 2
 ## Customer number from DQ Tool
 custnr: "0000"
 
