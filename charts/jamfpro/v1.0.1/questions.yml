@@ -1,0 +1,100 @@
+categories:
+- jamf
+- JamfPro
+- Managed Service
+- WebApp
+- Data Quest AG
+questions:
+- variable: db.user
+  default: "hostedjamfdatabaseuser"
+  description: "Username for the MySQL Database."
+  type: string
+  label: "DB User"
+  group: "DB Settings"
+  required: true
+- variable: db.userpw
+  description: "Password for the MySQL Database-User."
+  type: password
+  label: "DB User PW"
+  group: "DB Settings"
+  required: true
+- variable: db.rootpw
+  description: "Password for the MySQL Root-User."
+  type: password
+  label: "MySQL Root PW"
+  group: "DB Settings"
+  required: true
+- variable: jamfpro.cacheenabled
+  default: true
+  description: "If true, memcached is enabled. (recomended)"
+  type: boolean
+  label: "Caching"
+  group: "Hosting"
+- variable: jamfpro.customdomain.enabled
+  default: false
+  description: "Select yes if you'd like to specify an alternative domain to host Jamf Pro"
+  type: boolean
+  label: "Custom Domain"
+  group: "Hosting"
+  show_subquestion_if: true
+  subquestions:
+  - variable: jamfpro.customdomain.fqdn
+    description: "Enter the FQDN on which Jamf Pro should be served."
+    type: string
+    label: "FQDN"
+    group: "Hosting"
+  - variable: jamfpro.customdomain.crt
+    escription: "Paste in the certificate containing its chain as a Base64 Encoded string"
+    type: string
+    label: "Certificate"
+    group: "Hosting"
+  - variable: jamfpro.customdomain.key
+    escription: "Paste in the certificate key as a Base64 Encoded string"
+    type: string
+    label: "Private Key"
+    group: "Hosting"
+- variable: jamfpro.preconfig.license
+  description: "Please enter the Jamf Pro license for this Customer."
+  type: string
+  label: "Jamf Pro License"
+  group: "Jamf Pro"
+- variable: jamfpro.preconfig.mail
+  description: "Please enter the Customers Admin Mail."
+  type: string
+  label: "Jamf Pro Admin Mail"
+  group: "Jamf Pro"
+- variable: jamfpro.preconfig.companyname
+  description: "Please enter the Customer Name."
+  type: string
+  label: "Company Name"
+  group: "Jamf Pro"
+- variable: jamfpro.preconfig.standard
+  default: true
+  description: "Select yes if you want to use the standard configuration. (Described here)"
+  type: boolean
+  label: "Default Configuration"
+  group: "Jamf Pro Configuration"
+- variable: jamfpro.preconfig.custom
+  default: false
+  description: "Select yes if you want to use a custom configuration. (Described here)"
+  type: boolean
+  label: "Custom Configuration"
+  group: "Jamf Pro Configuration"
+  show_subquestion_if: true
+  subquestions:
+  - variable: jamfpro.preconfig.customgit
+    default: "https://example.com/username/branche.git"
+    description: "Please enter the GIT Repo to get the configuration."
+    type: string
+    label: "Custom GIT"
+    group: "Jamf Pro Configuration"
+  - variable: jamfpro.preconfig.customuser
+    description: "Please enter a username to authenticate to the GIT Repo."
+    type: string
+    label: "GIT User"
+    group: "Jamf Pro Configuration"
+  - variable: jamfpro.preconfig.custompw
+    description: "Please enter a password to authenticate to the GIT Repo."
+    type: password
+    label: "GIT Password"
+    group: "Jamf Pro Configuration"
