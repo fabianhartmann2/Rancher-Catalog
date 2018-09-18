@@ -160,6 +160,7 @@ spec:
               configMapKeyRef:
                 name: {{ template "jamfpro.fullname" . }}-hostingconfig
                 key: cache.enabled
+
 {{- end -}}
         volumeMounts:
         - name: logs
