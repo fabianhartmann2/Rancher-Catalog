@@ -81,11 +81,11 @@ spec:
         livenessProbe:
           tcpSocket:
             port: 3306
-          {{ toYaml .Values.db.livenessProbe | indent 8 }}
+{{ toYaml .Values.db.livenessProbe | indent 8 }}
         readinessProbe:
           exec:
             command: ["mysql", "-h", "127.0.0.1", "-e", "SELECT 1"]
-          {{ toYaml .Values.db.readinessProbe | indent 8 }}
+{{ toYaml .Values.db.readinessProbe | indent 8 }}
 ---
 # Jamf WebApp
 apiVersion: apps/v1
@@ -110,7 +110,7 @@ spec:
       instanceid: "{{ .Values.instanceid }}"
       chart: "{{ .Chart.Name }}"
       release: "{{ .Release.Name }}"
-  {{ toYaml .Values.scaling | indent 4 }}
+{{ toYaml .Values.scaling | indent 4 }}
   serviceName: {{ template "jamfpro.fullname" . }}-jamfwebapp-srv
   template:
     metadata:
