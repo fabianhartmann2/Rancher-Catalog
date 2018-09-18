@@ -1,3 +1,4 @@
+# config
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -17,11 +18,3 @@ data:
   cache.memcachedservice: jamf-memcached-srv
   cache.uniqueid: {{ default uuidv4 }}
 {{- end -}}
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: jamf-nginx-ingress-controller-conf
-  namespace: {{ .Release.Namespace }}
-data:
-  use-proxy-protocol: "true"
