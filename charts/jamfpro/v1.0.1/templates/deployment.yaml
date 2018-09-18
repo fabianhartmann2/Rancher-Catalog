@@ -179,9 +179,10 @@ spec:
             scheme: HTTP
           {{ toYaml .Values.jamfpro.readinessProbe | indent 12 }}
 {{- if .Values.logs.enabled}}
+  {{ $global := . }}
   {{ range $i, $log := .Values.logs.logfiles -}}
       - name: jamf-{{ $log.name }}
-        image: "{{ .Values.logs.image }}:{{ .Values.logs.imageTag }}"
+        image: "{{ $global.Values.logs.image }}:{{ $global.Values.logs.imageTag }}"
         args: [/bin/sh, -c, 'tail -n+1 -f {{ $log.path }}']
         volumeMounts:
         - name: logs
