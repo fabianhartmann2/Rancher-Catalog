@@ -191,7 +191,7 @@ spec:
 {{ end }}
 {{ end }}
       - name: jamf-healthcheck
-        image: "{{ .Values.logs.image }}:{{ .Values.logs.imageTag }}"
+        image: "byrnedo/alpine-curl:0.1.7"
         args: [/bin/sh, -c, 'while true; do  curl --header "Connection: keep-alive" "127.0.0.1:8006/healthCheck.html"; sleep 5; done']
       volumes:
       - name: logs
