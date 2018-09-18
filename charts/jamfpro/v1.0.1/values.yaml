@@ -39,6 +39,7 @@ scaling:
     type: RollingUpdate
   revisionHistoryLimit: 5
   podManagementPolicy: OrderedReady
+
 logs:
   ## Expose jamfpro logs
   enabled: true
