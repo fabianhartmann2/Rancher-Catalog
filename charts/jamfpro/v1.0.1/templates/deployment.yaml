@@ -171,8 +171,8 @@ spec:
             scheme: HTTP
 {{ toYaml .Values.jamfpro.readinessProbe | indent 10 }}
 {{- if .Values.logs.enabled}}
-  {{ $global := . }}
-      {{ range $i, $log := .Values.logs.logfiles }}
+{{ $global := . }}
+{{ range $i, $log := .Values.logs.logfiles }}
       - name: jamf-{{ $log.name }}
         image: "{{ $global.Values.logs.image }}:{{ $global.Values.logs.imageTag }}"
         args: [/bin/sh, -c, 'tail -n+1 -f {{ $log.path }}']
@@ -180,7 +180,7 @@ spec:
         - name: logs
           mountPath: /var/log
 
-      {{- end }}
+{{- end }}
 {{- end }}
       volumes:
       - name: logs
