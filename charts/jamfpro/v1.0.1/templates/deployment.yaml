@@ -180,7 +180,7 @@ spec:
         - name: logs
           mountPath: /var/log
 
-  {{- end }}
+      {{- end }}
 {{- end }}
       volumes:
       - name: logs
