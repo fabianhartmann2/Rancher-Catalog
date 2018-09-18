@@ -28,6 +28,7 @@ metadata:
   name: {{ template "jamfpro.fullname" . }}-jamfwebapp-srv
   namespace: {{ .Release.Namespace }}
   labels:
+    app: jamfwebapp
     dqservice: hostedjamf
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"

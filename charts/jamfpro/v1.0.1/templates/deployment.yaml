@@ -115,6 +115,7 @@ spec:
   template:
     metadata:
       labels:
+        app: jamfwebapp
         dqservice: hostedjamf
         cust: "{{ .Values.custnr }}"
         instanceid: "{{ .Values.instanceid }}"
