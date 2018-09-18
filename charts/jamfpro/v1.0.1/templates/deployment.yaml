@@ -93,7 +93,7 @@ metadata:
     chart: "{{ .Chart.Name }}"
     release: "{{ .Release.Name }}"
 spec:
-  replicas: "{{ .Values.replicas }}"
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       app: jamfwebapp
