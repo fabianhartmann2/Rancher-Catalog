@@ -22,6 +22,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: jamf-nginx-ingress-controller-conf
-  namespace: "238896"
+  namespace: {{ .Release.Namespace }}
 data:
   use-proxy-protocol: "true"
