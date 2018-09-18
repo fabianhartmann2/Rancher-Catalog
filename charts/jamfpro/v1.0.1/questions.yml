@@ -6,7 +6,7 @@ categories:
 - Data Quest AG
 questions:
 - variable: db.user
-  default: "hostedjamfdatabaseuser"
+  default: "jpdbuser"
   description: "Username for the MySQL Database."
   type: string
   label: "DB User"
