@@ -144,7 +144,7 @@ spec:
               secretKeyRef:
                 name: {{ template "jamfpro.fullname" . }}-dbcredentials
                 key: db.userpw
-          {{- if .Values.jamfpro.cacheenabled}}
+{{- if .Values.jamfpro.cacheenabled}}
           - name: memcachedservice
             valueFrom:
               configMapKeyRef:
@@ -161,7 +161,7 @@ spec:
                 name: {{ template "jamfpro.fullname" . }}-hostingconfig
                 key: cache.enabled
 
-          {{- end -}}
+{{- end -}}
         volumeMounts:
         - name: logs
           mountPath: /var/log
