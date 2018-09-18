@@ -115,10 +115,16 @@ jamfpro:
     customgit:
   readinessProbe:
     initialDelaySeconds: 20
-    periodSeconds: 10
-    timeoutSeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 2
     failureThreshold: 6
-    successThreshold: 30
+    successThreshold: 3
+  livenessProbe:
+    initialDelaySeconds: 20
+    periodSeconds: 5
+    timeoutSeconds: 1
+    failureThreshold: 6
+    successThreshold: 3
 ## Customer number from DQ Tool
 custnr: "0000"
 
