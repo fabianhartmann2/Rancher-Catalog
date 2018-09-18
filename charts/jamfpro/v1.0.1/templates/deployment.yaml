@@ -102,7 +102,7 @@ spec:
       instanceid: "{{ .Values.instanceid }}"
       chart: "{{ .Chart.Name }}"
       release: "{{ .Release.Name }}"
-{{ toYaml .Values.scaling | indent 4 }}
+{{ toYaml .Values.scaling | indent 2 }}
   serviceName: {{ template "jamfpro.fullname" . }}-jamfwebapp-srv
   template:
     metadata:
@@ -180,8 +180,8 @@ spec:
         - name: logs
           mountPath: /var/log
 
+{{- end }}
 {{ end }}
-{{ end -}}
       volumes:
       - name: logs
         emptyDir: {}
