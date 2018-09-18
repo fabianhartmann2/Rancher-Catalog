@@ -51,8 +51,6 @@ logs:
       path: "/var/log/JSS/JAMFChangeManagement.log"
     - name: softwareserver
       path: "/var/log/JSS/JAMFSoftwareServer.log"
-    - name: changemanagement
-      path: "/var/log/JSS/JAMFChangeManagement.log"
     - name: access
       path: "/var/log/JSS/JSSAccess.log"
     - name: supervisord
@@ -78,7 +76,7 @@ logs:
 db:
   name: jamfdatabasename
   port: 3306
-  user: hostedjamfdatabaseuser
+  user: dbuser
   userpw: IamVerryUnsecure
   rootpw: Iamevenmoreunsecure1234
   image: "mysql/mysql-server"
