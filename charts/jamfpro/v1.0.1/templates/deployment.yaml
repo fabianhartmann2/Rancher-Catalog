@@ -78,14 +78,7 @@ spec:
               secretKeyRef:
                 name: {{ template "jamfpro.fullname" . }}-dbcredentials
                 key: db.userpw
-        livenessProbe:
-          tcpSocket:
-            port: 3306
-          {{ toYaml .Values.db.livenessProbe | indent 8 }}
-        readinessProbe:
-          exec:
-            command: ["mysql", "-h", "127.0.0.1", "-e", "SELECT 1"]
-          {{ toYaml .Values.db.readinessProbe | indent 8 }}
+
 ---
 # Jamf WebApp
 apiVersion: apps/v1
