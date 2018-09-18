@@ -12,7 +12,7 @@ metadata:
     release: "{{ .Release.Name }}"
 data:
   db.name: "{{ .Values.db.name }}"
-  db.port: {{ .Values.db.port }}
+  db.port: "{{ .Values.db.port }}"
   cache.enabled: "{{ .Values.jamfpro.cacheenabled }}"
 {{- if .Values.jamfpro.cacheenabled }}
   cache.memcachedservice: jamf-memcached-srv
