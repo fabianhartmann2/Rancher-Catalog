@@ -5,19 +5,6 @@ categories:
 - WebApp
 - Data Quest AG
 questions:
-- variable: db.user
-  default: "jpdbuser"
-  description: "Username for the MySQL Database."
-  type: string
-  label: "DB User"
-  group: "DB Settings"
-  required: true
-- variable: db.userpw
-  description: "Password for the MySQL Database-User."
-  type: password
-  label: "DB User PW"
-  group: "DB Settings"
-  required: true
 - variable: jamfpro.cacheenabled
   default: true
   description: "If true, memcached is enabled. (recomended)"
@@ -62,6 +49,27 @@ questions:
   type: string
   label: "Company Name"
   group: "Jamf Pro"
+- variable: jamfpro.adminuseroverwrite
+  default: false
+  description: "Select yes if you'd like to specify your own admin credentials."
+  type: boolean
+  label: "Admin Credentials"
+  group: "Jamf Pro"
+  show_subquestion_if: true
+  subquestions:
+  - variable: jamfpro.preconfig.adminuser
+    default: "administrator"
+    description: "Admin User for JamfPro"
+    type: string
+    label: "Jamf Admin"
+    group: "Jamf Pro"
+    required: true
+  - variable: jamfpro.preconfig.adminpassword
+    description: "Admin Password for JamfPro"
+    type: password
+    label: "Jamf Admin PW"
+    group: "Jamf Pro"
+    required: true
 - variable: jamfpro.preconfig.standard
   default: true
   description: "Select yes if you want to use the standard configuration. (Described here)"
