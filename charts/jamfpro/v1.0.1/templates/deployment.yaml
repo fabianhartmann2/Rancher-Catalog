@@ -48,7 +48,7 @@ spec:
         volumeMounts:
         - name: database
           mountPath: /var/lib/mysql
-          subPath: {{ template "jamfpro.fullname" . }}-jamfmysql
+          subPath: {{ template "jamfpro.fullname" . }}jamfmysql
         args:
           - --connect_timeout=100000
           - --wait_timeout=100000
