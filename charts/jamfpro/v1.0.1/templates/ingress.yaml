@@ -42,7 +42,7 @@ spec:
   - hosts:
     - {{ .Values.jamfpro.customdomain.fqdn }}
     secretName: {{ template "jamfpro.fullname" . }}-customcert-{{ .Values.jamfpro.customdomain.fqdn }}
-{{- end -}}
+{{- end }}
   rules:
   - host: jamf.dq.solutions
     http:
@@ -66,6 +66,6 @@ spec:
         backend:
           serviceName: {{ template "jamfpro.fullname" . }}-jamfwebapp-srv
           servicePort: 80
-{{- end -}}
+{{- end }}
 # https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/nginx-configuration/annotations.md#rewrite
 # https://www.ssllabs.com/ssltest/analyze.html?d=jamf.dq.solutions
