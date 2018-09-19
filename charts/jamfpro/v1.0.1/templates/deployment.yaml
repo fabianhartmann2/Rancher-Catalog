@@ -178,12 +178,6 @@ spec:
             port: jamfweb
             scheme: HTTP
 {{ toYaml .Values.jamfpro.readinessProbe | indent 10 }}
-        livenessProbe:
-          httpGet:
-            path: /healthCheck.html
-            port: jamfweb
-            scheme: HTTP
-{{ toYaml .Values.jamfpro.livenessProbe | indent 10 }}
 {{- if .Values.logs.enabled}}
 {{ $global := . }}
 {{ range $i, $log := .Values.logs.logfiles }}
@@ -199,7 +193,7 @@ spec:
       - name: jamf-healthcheck
         image: "byrnedo/alpine-curl:0.1.7"
         command: ["/bin/sh"]
-        args: [ '-c', 'while true; do  curl --header "Connection: keep-alive" "http://127.0.0.1:8006/healthCheck.html"; sleep 5; done']
+        args: [ '-c', 'while true; do  curl --header "Connection: keep-alive" "http://127.0.0.1:8006/healthCheck.html"; sleep 8; done']
       volumes:
       - name: logs
         emptyDir: {}
