@@ -43,13 +43,6 @@ spec:
     secretName: {{ template "jamfpro.fullname" . }}-customcert-{{ .Values.jamfpro.customdomain.fqdn }}
 {{- end }}
   rules:
-  - host: jamf.dq.solutions
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: {{ template "jamfpro.fullname" . }}-jamfwebapp-srv
-          servicePort: 80
   - host: {{ template "jamfpro.fullname" . }}.dq.solutions
     http:
       paths:
