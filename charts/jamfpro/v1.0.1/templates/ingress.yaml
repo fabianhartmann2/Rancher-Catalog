@@ -35,7 +35,6 @@ metadata:
 spec:
   tls:
   - hosts:
-    - jamf.dq.solutions
     - {{ template "jamfpro.fullname" . }}.dq.solutions
     secretName: jamf-webcert
 {{- if .Values.jamfpro.customdomain.enabled}}
