@@ -13,7 +13,7 @@ questions:
   group: "Hosting"
 - variable: jamfpro.customdomain.enabled
   default: false
-  description: "Select yes if you'd like to specify an alternative domain to host Jamf Pro"
+  description: "Select yes if you'd like to specify an alternative domain to host Jamf Pro. The Service is allways hosted on <releasename>.dq.solutions"
   type: boolean
   label: "Custom Domain"
   group: "Hosting"
@@ -42,7 +42,7 @@ questions:
 - variable: jamfpro.preconfig.mail
   description: "Please enter the Customers Admin Mail."
   type: string
-  label: "Jamf Pro Admin Mail"
+  label: "Company Mail"
   group: "Jamf Pro"
 - variable: jamfpro.preconfig.companyname
   description: "Please enter the Customer Name."
@@ -53,7 +53,7 @@ questions:
   default: false
   description: "Select yes if you'd like to specify your own admin credentials."
   type: boolean
-  label: "Admin Credentials"
+  label: "Override Admin Credentials"
   group: "Jamf Pro"
   show_subquestion_if: true
   subquestions:
