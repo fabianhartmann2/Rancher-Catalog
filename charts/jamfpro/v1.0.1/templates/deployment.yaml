@@ -175,9 +175,6 @@ spec:
               configMapKeyRef:
                 name: {{ template "jamfpro.fullname" . }}-hostingconfig
                 key: cache.enabled
-        volumeMounts:
-        - name: logs
-          mountPath: /var/log
         recources:
           requests:
             cpu: "200m"
@@ -185,6 +182,9 @@ spec:
           limits:
             memory: "2048M"
             cpu: 2
+        volumeMounts:
+        - name: logs
+          mountPath: /var/log
         readinessProbe:
           httpGet:
             path: /healthCheck.html
