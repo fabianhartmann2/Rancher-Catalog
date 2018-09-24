@@ -112,6 +112,9 @@ spec:
       release: "{{ .Release.Name }}"
 {{ toYaml .Values.scaling | indent 2 }}
   serviceName: {{ template "jamfpro.fullname" . }}-jamfwebapp-srv
+  TerminationGracePeriodSeconds: 40
+  updateStrategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
