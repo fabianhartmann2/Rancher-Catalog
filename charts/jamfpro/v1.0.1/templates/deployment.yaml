@@ -131,7 +131,13 @@ spec:
       containers:
       - name: jamf
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
-        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "1024M"
+          limits:
+            memory: "2048M"
+            cpu: 2
         ports:
         - name: jamfweb
           containerPort: 8006
@@ -175,13 +181,6 @@ spec:
               configMapKeyRef:
                 name: {{ template "jamfpro.fullname" . }}-hostingconfig
                 key: cache.enabled
-        recources:
-          requests:
-            cpu: "200m"
-            memory: "1024M"
-          limits:
-            memory: "2048M"
-            cpu: 2
         volumeMounts:
         - name: logs
           mountPath: /var/log
