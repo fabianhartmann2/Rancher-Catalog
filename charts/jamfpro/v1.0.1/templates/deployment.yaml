@@ -172,6 +172,13 @@ spec:
         volumeMounts:
         - name: logs
           mountPath: /var/log
+        recources:
+          requests:
+            cpu: "200m"
+            memory: "1024M"
+          limits:
+            memory: "2048M"
+            cpu: 2
         readinessProbe:
           httpGet:
             path: /healthCheck.html
