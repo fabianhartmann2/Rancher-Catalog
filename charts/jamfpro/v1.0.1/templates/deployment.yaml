@@ -48,7 +48,7 @@ spec:
         volumeMounts:
         - name: database
           mountPath: /var/lib/mysql
-{{ if .Values.jamfpro.customstorage.enabled }}
+{{ if .Values.jamfpro.customstorage.enabled}}
           subPath: {{ .Values.jamfpro.customstorage.path }}
 {{ else }}
           subPath: {{ .Values.custnr }}/{{ template "jamfpro.fullname" . }}/jamfmysql

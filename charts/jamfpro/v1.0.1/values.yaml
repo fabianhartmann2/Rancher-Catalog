@@ -99,6 +99,8 @@ db:
 ## jamf Pro Settings
 jamfpro:
   cacheenabled: true
+  customstorage:
+    enabled: false
   customdomain:
     enabled: false
     fqdn:
