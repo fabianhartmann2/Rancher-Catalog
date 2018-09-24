@@ -80,7 +80,7 @@ db:
   userpw: IamVerryUnsecure
   rootpw: Iamevenmoreunsecure1234
   image: "mysql/mysql-server"
-  imageTag: "5.6"
+  imageTag: "5.7.23"
   livenessProbe:
     initialDelaySeconds: 20
     periodSeconds: 10
