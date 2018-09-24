@@ -74,9 +74,9 @@ logs:
 
 ## Database Settings and credentials
 db:
-  name: jamfdatabasename
+  name: jamfprodb
   port: 3306
-  user: dbuser
+  user: jamfdatabaseuser
   userpw: IamVerryUnsecure
   rootpw: Iamevenmoreunsecure1234
   image: "mysql/mysql-server"

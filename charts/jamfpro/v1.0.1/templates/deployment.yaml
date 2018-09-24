@@ -25,7 +25,7 @@ spec:
     type: Recreate
     rollingUpdate:
   progressDeadlineSeconds: 240
-  minReadySeconds: 60
+  minReadySeconds: 20
   revisionHistoryLimit: 5
   template:
     metadata:
