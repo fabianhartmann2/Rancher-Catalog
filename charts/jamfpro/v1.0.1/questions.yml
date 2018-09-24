@@ -11,6 +11,19 @@ questions:
   type: boolean
   label: "Caching"
   group: "Hosting"
+- variable: jamfpro.customstorage.enabled
+  default: false
+  description: "Select yes it you want to specify a manual path to the storage."
+  type: boolean
+  label: "Costpm Storagepath"
+  group: "Hosting"
+  show_subquestion_if: true
+  subquestions:
+  - variable: jamfpro.customstorage.path
+    description: "Enter the POSIX to the working dorectory."
+    type: string
+    label: "Path"
+    group: "Hosting"
 - variable: jamfpro.customdomain.enabled
   default: false
   description: "Select yes if you'd like to specify an alternative domain to host Jamf Pro. The Service is allways hosted on <releasename>.dq.solutions"

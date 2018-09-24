@@ -87,6 +87,7 @@ questions:
     label: "Custom Configuration"
     group: "Jamf Pro Configuration"
     show_subquestion_if: true
+    subquestions:
     - variable: jamfpro.preconfig.customgit
       default: true
       description: "Please enter the GIT Repo to get the configuration."

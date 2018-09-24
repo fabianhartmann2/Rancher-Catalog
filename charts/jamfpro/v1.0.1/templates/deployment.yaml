@@ -48,7 +48,11 @@ spec:
         volumeMounts:
         - name: database
           mountPath: /var/lib/mysql
+{{- if .Values.jamfpro.customstorage.enabled}}
+          subPath: {{ .Values.jamfpro.customstorage.path }}/jamfmysql
+{{ else }}
           subPath: {{ .Values.custnr }}/{{ template "jamfpro.fullname" . }}/jamfmysql
+{{- end }}
         args:
           - --connect_timeout=100000
           - --wait_timeout=100000
