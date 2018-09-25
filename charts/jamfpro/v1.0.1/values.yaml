@@ -70,9 +70,9 @@ logs:
 
 ## Database Settings and credentials
 db:
-  name: jamfdatabasename
+  name: jamfprodb
   port: 3306
-  user: jamfdatabaseuser
+  user: jamfdbuser
   image: "mysql/mysql-server"
   imageTag: "5.7.23"
   livenessProbe:
