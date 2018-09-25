@@ -31,5 +31,19 @@ questions:
   type: boolean
   label: Metrics
   group: "Settings"
+- variable: customservicename.enabled
+  default: false
+  description: "Define a custom Service-Name."
+  type: boolean
+  label: "Custom Service Name"
+  group: "Settings"
+  show_subquestion_if: true
+  subquestions:
+  - variable: customservicename.name
+    description: "Enter a custom name."
+    type: string
+    label: "Name"
+    group: "Settings"
+
 
 # https://rancher.com/docs/rancher/v2.x/en/catalog/custom/#rancher-chart-additional-files

@@ -6,8 +6,8 @@ metadata:
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
     chart: "{{ .Chart.Name }}"
-{{ if .Values.servicename }}
-    release: "{{ .Values.servicename }}"
+{{ if .Values.customservicename.enabled }}
+    release: "{{ .Values.customservicename.name }}"
 {{ else }}
     release: "{{ .Release.Name }}"
 {{ end }}
