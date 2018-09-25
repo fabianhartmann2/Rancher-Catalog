@@ -19,7 +19,6 @@ data:
   cache.uniqueid: {{ default uuidv4 }}
 {{- end -}}
 ---
-# mysql config
 apiVersion: v1
 kind: ConfigMap
 metadata:
