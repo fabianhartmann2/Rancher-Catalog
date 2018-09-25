@@ -6,12 +6,12 @@ metadata:
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
     chart: "{{ .Chart.Name }}"
-{{- if .Values.customservicename.enabled }}
-    release: "{{ .Values.customservicename.name }}"
-{{ else }}
     release: "{{ .Release.Name }}"
-{{ end }}
+{{- if .Values.customservicename.enabled }}
+  name: "{{ .Values.customservicename.name }}"
+{{ else }}
   name: {{ template "memcached.fullname" . }}
+{{ end }}
   namespace: {{ .Release.Namespace }}
 spec:
   clusterIP: None  # Headless service
