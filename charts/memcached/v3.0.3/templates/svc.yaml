@@ -6,7 +6,11 @@ metadata:
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
     chart: "{{ .Chart.Name }}"
+{{ if .Values.servicename }}
+    release: "{{ .Values.servicename }}"
+{{ else }}
     release: "{{ .Release.Name }}"
+{{ end }}
   name: {{ template "memcached.fullname" . }}
   namespace: {{ .Release.Namespace }}
 spec:

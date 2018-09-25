@@ -4,7 +4,7 @@ image: "fabianhartmann/jamf"
 ## memcached image version
 ## ref: https://hub.docker.com/r/library/memcached/tags/
 ##
-imageTag: "10.5-tomcat8.0.53-jre8"
+imageTag: "10.6.2-tomcat8.0.53-jre8"
 
 ## Specify a imagePullPolicy
 ## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
@@ -28,10 +28,6 @@ resources:
     memory: 512Mi
     cpu: 100m
 
-service:
-  type: ClusterIP
-  port: 11211
-  externalIPs: []
 
 ## Scaling option for the jamfwebapp
 scaling:
@@ -74,11 +70,9 @@ logs:
 
 ## Database Settings and credentials
 db:
-  name: jamfprodb
+  name: jamfdatabasename
   port: 3306
   user: jamfdatabaseuser
-  userpw: IamVerryUnsecure
-  rootpw: Iamevenmoreunsecure1234
   image: "mysql/mysql-server"
   imageTag: "5.7.23"
   livenessProbe:
