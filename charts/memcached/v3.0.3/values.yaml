@@ -59,6 +59,10 @@ metrics:
 ## Customer number from DQ Tool
 custnr: "0000"
 
+## Custom Servicename
+customservicename:
+  enabled: false
+  name: 
 ## UID ot the instance
 instanceid: "4E4888E3-E03D-4489-85F6-8211F90303AD"
 ## Node labels and tolerations for pod assignment

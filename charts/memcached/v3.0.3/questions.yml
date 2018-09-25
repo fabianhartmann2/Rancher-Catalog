@@ -22,7 +22,8 @@ questions:
   valid_chars: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
 - variable: replicas
   description: "Number of nodes to create in the cluster"
-  type: int
+  type: integer
+  default: 2
   label: Replicas
   group: "Settings"
 - variable: metrics.enabled
