@@ -42,10 +42,18 @@ spec:
         nfs:
           path: /nfs
           server: 10.100.0.247
+      - name: config
+        configMap:
+          name: {{ template "jamfpro.fullname" . }}-mysqlconfig
+          items:
+          - key: mysql-config
+            path: my.cnf
       containers:
       - name: jamf-mysql
         image: "{{ .Values.db.image }}:{{ .Values.db.imageTag }}"
         volumeMounts:
+        - name: config
+          mountPath: /etc
         - name: database
           mountPath: /var/lib/mysql
 {{ if .Values.jamfpro.customstorage.enabled}}
@@ -53,10 +61,6 @@ spec:
 {{ else }}
           subPath: {{ .Values.custnr }}/{{ template "jamfpro.fullname" . }}/jamfmysql
 {{- end }}
-        args:
-          - --connect_timeout=100000
-          - --wait_timeout=100000
-          - --interactive_timeout=100000
         env:
           - name: MYSQL_ROOT_HOST
             value: "%"
