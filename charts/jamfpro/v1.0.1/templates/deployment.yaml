@@ -53,7 +53,7 @@ spec:
         image: "{{ .Values.db.image }}:{{ .Values.db.imageTag }}"
         volumeMounts:
         - name: config
-          mountPath: /etc/mysql/conf.d
+          mountPath: /etc/my.cnf.d
         - name: database
           mountPath: /var/lib/mysql
 {{ if .Values.jamfpro.customstorage.enabled}}
