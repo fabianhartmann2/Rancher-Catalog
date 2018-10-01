@@ -89,6 +89,15 @@ db:
     successThreshold: 1
   settings:
     logconsole: true
+  logs:
+    ## Expose jamfpro logs
+    enabled: true
+    ## baseimage for log container
+    image: "busybox"
+    imageTag: "1.29.2"
+    logfiles:
+      - name: mysqld
+        path: "/var/log/mysqld.log"
 
 ## jamf Pro Settings
 jamfpro:

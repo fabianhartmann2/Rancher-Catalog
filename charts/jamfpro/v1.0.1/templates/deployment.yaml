@@ -48,6 +48,8 @@ spec:
           items:
           - key: mysql-config
             path: my.cnf
+      - name: logs
+        emptyDir: {}
       containers:
       - name: jamf-mysql
         image: "{{ .Values.db.image }}:{{ .Values.db.imageTag }}"
@@ -56,6 +58,8 @@ spec:
           mountPath: /etc/my.cnf.d
         - name: database
           mountPath: /var/lib/mysql
+        - name: logs
+          mountPath: /var/log
 {{ if .Values.jamfpro.customstorage.enabled}}
           subPath: {{ .Values.jamfpro.customstorage.path }}
 {{ else }}
@@ -94,6 +98,18 @@ spec:
           tcpSocket:
             port: 3306
 {{ toYaml .Values.db.readinessProbe | indent 10 }}
+{{- if .Values.db.logs.enabled}}
+{{ $global := . }}
+{{ range $i, $log := .Values.db.logs.logfiles }}
+      - name: mysql-{{ $log.name }}
+        image: "{{ $global.Values.db.logs.image }}:{{ $global.Values.db.logs.imageTag }}"
+        args: [/bin/sh, -c, 'tail -n+1 -f {{ $log.path }}']
+        volumeMounts:
+        - name: logs
+          mountPath: /var/log
+
+{{ end }}
+{{ end }}
 ---
 # Jamf WebApp
 apiVersion: apps/v1
