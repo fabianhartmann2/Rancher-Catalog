@@ -7,13 +7,13 @@ The setup includes three Jamf Pro pods, including the Application and some loggi
 Two Services, one for MySQL and one for the WebApplication. The webaplication is exposed by an Ingress.
 
 ```
-				 	 	    ------------
-					  /  – 	|JamfWebapp|   –  \
-					 /	    ------------	   \
----------	------------	------------	-----------	  ------------
-|Ingress| – |webapp-srv| –  |JamfWebapp| –  |mysql-srv| – |mysqlserver|
----------	------------	------------	-----------	  ------------
-				 	 \	  	 ------------	  	/
-					  \ –	 |JamfWebapp|   –  /
-					 	  	 ------------
+									 	 	    	------------
+										  /  –	|JamfWebapp| – \
+										 /	    ------------	  \
+---------		------------	 ------------		-----------	  ------------
+|Ingress| – |webapp-srv| – |JamfWebapp| –	|mysql-srv| – |mysqlserver|
+---------		------------	 ------------		-----------	  ------------
+									 	 \	   ------------	  	/
+										  \  – |JamfWebapp| –  /
+										 	  	 ------------
 ```
