@@ -48,7 +48,7 @@ spec:
           items:
           - key: mysql-config
             path: my.cnf
-      - name: logs
+      - name: dblogs
         emptyDir: {}
       containers:
       - name: jamf-mysql
@@ -58,13 +58,13 @@ spec:
           mountPath: /etc/my.cnf.d
         - name: database
           mountPath: /var/lib/mysql
-        - name: logs
-          mountPath: /var/log
 {{ if .Values.jamfpro.customstorage.enabled}}
           subPath: {{ .Values.jamfpro.customstorage.path }}
 {{ else }}
           subPath: {{ .Values.custnr }}/{{ template "jamfpro.fullname" . }}/jamfmysql
 {{- end }}
+        - name: dblogs
+          mountPath: /var/log
         env:
           - name: MYSQL_ROOT_HOST
             value: "%"
