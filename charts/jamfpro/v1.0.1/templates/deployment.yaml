@@ -226,6 +226,31 @@ spec:
         image: "byrnedo/alpine-curl:0.1.7"
         command: ["/bin/sh"]
         args: [ '-c', 'while true; do  curl --header "Connection: keep-alive" "http://127.0.0.1:8006/healthCheck.html"; sleep 8; done']
+      - name: jamf-sidecar
+        image: "fabianhartmann/jamf-sidecar:latest"
+        env:
+          - name: MYSQL_DATABASE
+            valueFrom:
+              configMapKeyRef:
+                name: {{ template "jamfpro.fullname" . }}-hostingconfig
+                key: db.name
+          - name: MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "jamfpro.fullname" . }}-dbcredentials
+                key: db.user
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "jamfpro.fullname" . }}-dbcredentials
+                key: db.userpw
+          - name: MYSQL_HOST
+            value: {{ template "jamfpro.fullname" . }}-mysql-srv
+          - name: MYSQL_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: {{ template "jamfpro.fullname" . }}-hostingconfig
+                key: db.port
       volumes:
       - name: logs
         emptyDir: {}
