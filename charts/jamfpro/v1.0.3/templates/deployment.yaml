@@ -27,7 +27,7 @@ spec:
   progressDeadlineSeconds: 240
   minReadySeconds: 20
   revisionHistoryLimit: 5
-  automountServiceAccountToken: false
+  #automountServiceAccountToken: false
   template:
     metadata:
       labels:
@@ -139,7 +139,7 @@ spec:
   serviceName: {{ template "jamfpro.fullname" . }}-jamfwebapp-srv
   updateStrategy:
     type: RollingUpdate
-  automountServiceAccountToken: false
+  #automountServiceAccountToken: false
   template:
     metadata:
       labels:
