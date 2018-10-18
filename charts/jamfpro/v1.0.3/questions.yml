@@ -132,7 +132,7 @@ questions:
   label: "Keep daily backup"
   group: "Backup"
 - variable: jamfpro.backup.crontime
-  default: 3
+  default: "0 2/6 * * *"
   description: "Define when a backup should be done. (in Cron format!)"
   type: string
   label: "Backuptime"
