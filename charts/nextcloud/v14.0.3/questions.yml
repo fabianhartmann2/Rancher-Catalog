@@ -1,0 +1,48 @@
+categories:
+- CloudServices
+- Managed Service
+- DQ Solutions
+questions:
+- variable: custnr
+  default: ""
+  description: "Customer Number from CRM"
+  type: string
+  label: "Customer Nr"
+  group: "Settings"
+  required: true
+- variable: instanceid
+  default: ""
+  description: "UID for this instance to be identified by the CRM like: 7014E6C0-B07C-4108-92AB-17669E20A540"
+  type: string
+  label: "Instance UID"
+  group: "Settings"
+  required: false
+  valid_chars: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+- variable: replicas
+  description: "Number of nodes to create in the cluster"
+  type: int
+  default: 2
+  label: Replicas
+  group: "Settings"
+- variable: metrics.enabled
+  default: true
+  description: "Enable metrics to use with Prometieus"
+  type: boolean
+  label: Metrics
+  group: "Settings"
+- variable: customservicename.enabled
+  default: false
+  description: "Define a custom Service-Name."
+  type: boolean
+  label: "Custom Service Name"
+  group: "Settings"
+  show_subquestion_if: true
+  subquestions:
+  - variable: customservicename.name
+    description: "Enter a custom name."
+    type: string
+    label: "Name"
+    group: "Settings"
+
+
+# https://rancher.com/docs/rancher/v2.x/en/catalog/custom/#rancher-chart-additional-files

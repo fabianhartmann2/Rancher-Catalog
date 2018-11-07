@@ -1,22 +1,21 @@
-# MySQL Database
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "jamfpro.fullname" . }}-mysqlserver
+  name: {{ template "nextcloud.fullname" . }}-mysqlserver
   namespace: {{ .Release.Namespace }}
   labels:
-    app: jamfmysql
-    dqservice: hostedjamf
-    cust: "{{ .Values.custnr }}"
-    instanceid: "{{ .Values.instanceid }}"
+    app: "{{ template "nextcloud.fullname" . }}"
     chart: "{{ .Chart.Name }}"
     release: "{{ .Release.Name }}"
+    dqservice: hostednextcloud
+    cust: "{{ .Values.custnr }}"
+    instanceid: "{{ .Values.instanceid }}"
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: jamfmysql
-      dqservice: hostedjamf
+      app: "{{ template "nextcloud.fullname" . }}"
+      dqservice: hostednextcloud
       cust: "{{ .Values.custnr }}"
       instanceid: "{{ .Values.instanceid }}"
       chart: "{{ .Chart.Name }}"
@@ -31,13 +30,25 @@ spec:
   template:
     metadata:
       labels:
-        app: jamfmysql
-        dqservice: hostedjamf
+        app: "{{ template "nextcloud.fullname" . }}"
+        dqservice: hostednextcloud
         cust: "{{ .Values.custnr }}"
         instanceid: "{{ .Values.instanceid }}"
         chart: "{{ .Chart.Name }}"
         release: "{{ .Release.Name }}"
     spec:
+      {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+      {{- end }}
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
+      {{- if .Values.tolerations }}
+      tolerations:
+{{ toYaml .Values.tolerations | indent 8 }}
+      {{- end }}
       volumes:
       - name: database
         nfs:
@@ -45,24 +56,24 @@ spec:
           server: 10.100.0.247
       - name: config
         configMap:
-          name: {{ template "jamfpro.fullname" . }}-mysqlconfig
+          name: {{ template "nextcloud.fullname" . }}-mysqlconfig
           items:
           - key: mysql-config
             path: my.cnf
       - name: logs
         emptyDir: {}
       containers:
-      - name: jamf-mysql
+      - name: nextcloud-mysql
         image: "{{ .Values.db.image }}:{{ .Values.db.imageTag }}"
         volumeMounts:
         - name: config
           mountPath: /etc/my.cnf.d
         - name: database
           mountPath: /var/lib/mysql
-{{ if .Values.jamfpro.customstorage.enabled}}
-          subPath: {{ .Values.jamfpro.customstorage.path }}
+{{ if .Values.nextcloudpro.customstorage.enabled}}
+          subPath: {{ .Values.nextcloudpro.customstorage.path }}
 {{ else }}
-          subPath: {{ .Values.custnr }}/{{ template "jamfpro.fullname" . }}/jamfmysql
+          subPath: {{ .Values.custnr }}/{{ template "nextcloudpro.fullname" . }}/nextcloudmysql
 {{- end }}
         - name: logs
           mountPath: /var/log
@@ -74,22 +85,22 @@ spec:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-dbcredentials
+                name: {{ template "nextcloudpro.fullname" . }}-dbcredentials
                 key: db.rootpw
           - name: MYSQL_DATABASE
             valueFrom:
               configMapKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-hostingconfig
+                name: {{ template "nextcloudpro.fullname" . }}-hostingconfig
                 key: db.name
           - name: MYSQL_USER
             valueFrom:
               secretKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-dbcredentials
+                name: {{ template "nextcloudpro.fullname" . }}-dbcredentials
                 key: db.user
           - name: MYSQL_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-dbcredentials
+                name: {{ template "nextcloudpro.fullname" . }}-dbcredentials
                 key: db.userpw
         livenessProbe:
           tcpSocket:
@@ -112,15 +123,15 @@ spec:
 {{ end }}
 {{ end }}
 ---
-# Jamf WebApp
+# nextcloud WebApp
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ template "jamfpro.fullname" . }}-jamfwebapp
+  name: {{ template "nextcloudpro.fullname" . }}-nextcloud
   namespace: {{ .Release.Namespace }}
   labels:
-    app: jamfwebapp
-    dqservice: hostedjamf
+    app: nectcloud
+    dqservice: hostednextcloud
     cust: "{{ .Values.custnr }}"
     instanceid: "{{ .Values.instanceid }}"
     chart: "{{ .Chart.Name }}"
@@ -129,93 +140,71 @@ spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      app: jamfwebapp
-      dqservice: hostedjamf
+      app: nextcloudapiapp
+      dqservice: hostednextcloud
       cust: "{{ .Values.custnr }}"
       instanceid: "{{ .Values.instanceid }}"
       chart: "{{ .Chart.Name }}"
       release: "{{ .Release.Name }}"
 {{ toYaml .Values.scaling | indent 2 }}
-  serviceName: {{ template "jamfpro.fullname" . }}-jamfwebapp-srv
+  serviceName: {{ template "nextcloudpro.fullname" . }}-nextcloudapiapp-srv
   updateStrategy:
     type: RollingUpdate
   #automountServiceAccountToken: false
   template:
     metadata:
       labels:
-        app: jamfwebapp
-        dqservice: hostedjamf
+        app: nextcloudapiapp
+        dqservice: hostednextcloud
         cust: "{{ .Values.custnr }}"
         instanceid: "{{ .Values.instanceid }}"
         chart: "{{ .Chart.Name }}"
         release: "{{ .Release.Name }}"
     spec:
       containers:
-      - name: jamf
+      - name: nextcloud
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
         resources:
           requests:
             cpu: "200m"
-            memory: "1024M"
+            memory: "512M"
           limits:
             memory: "2048M"
             cpu: 2
         ports:
-        - name: jamfweb
-          containerPort: 8006
+        - name: nextcloudapi
+          containerPort: 80
         env:
-          - name: db_host
-            value: {{ template "jamfpro.fullname" . }}-mysql-srv
-          - name: db_port
+          - name: MYSQL_HOST
+            value: {{ template "nextcloudpro.fullname" . }}-mysql-srv
+          - name: MYSQL_DATABASE
             valueFrom:
               configMapKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-hostingconfig
-                key: db.port
-          - name: db_name
-            valueFrom:
-              configMapKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-hostingconfig
+                name: {{ template "nextcloudpro.fullname" . }}-hostingconfig
                 key: db.name
-          - name: db_username
+          - name: MYSQL_USER
             valueFrom:
               secretKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-dbcredentials
+                name: {{ template "nextcloudpro.fullname" . }}-dbcredentials
                 key: db.user
-          - name: db_password
+          - name: MYSQL_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-dbcredentials
+                name: {{ template "nextcloudpro.fullname" . }}-dbcredentials
                 key: db.userpw
-{{- if .Values.jamfpro.cacheenabled}}
-          - name: memcachedservice
-            valueFrom:
-              configMapKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-hostingconfig
-                key: cache.memcachedservice
-          - name: memcacheuniqueid
-            valueFrom:
-              configMapKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-hostingconfig
-                key: cache.uniqueid
-{{- end }}
-          - name: cacheenabled
-            valueFrom:
-              configMapKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-hostingconfig
-                key: cache.enabled
         volumeMounts:
         - name: logs
           mountPath: /var/log
         readinessProbe:
           httpGet:
             path: /healthCheck.html
-            port: jamfweb
+            port: nextcloudapi
             scheme: HTTP
-{{ toYaml .Values.jamfpro.readinessProbe | indent 10 }}
+{{ toYaml .Values.nextcloudpro.readinessProbe | indent 10 }}
 {{- if .Values.logs.enabled}}
 {{ $global := . }}
 {{ range $i, $log := .Values.logs.logfiles }}
-      - name: jamf-{{ $log.name }}
+      - name: nextcloud-{{ $log.name }}
         image: "{{ $global.Values.logs.image }}:{{ $global.Values.logs.imageTag }}"
         args: [/bin/sh, -c, 'tail -n+1 -f {{ $log.path }}']
         volumeMounts:
@@ -224,38 +213,9 @@ spec:
 
 {{ end }}
 {{ end }}
-      - name: jamf-healthcheck
-        image: "byrnedo/alpine-curl:0.1.7"
-        command: ["/bin/sh"]
-        args: [ '-c', 'while true; do  curl --header "Connection: keep-alive" "http://127.0.0.1:8006/healthCheck.html"; sleep 8; done']
-      - name: jamf-sidecar
-        image: "fabianhartmann/jamf-sidecar:latest"
-        env:
-          - name: MYSQL_DATABASE
-            valueFrom:
-              configMapKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-hostingconfig
-                key: db.name
-          - name: MYSQL_USER
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-dbcredentials
-                key: db.user
-          - name: MYSQL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-dbcredentials
-                key: db.userpw
-          - name: MYSQL_HOST
-            value: {{ template "jamfpro.fullname" . }}-mysql-srv
-          - name: MYSQL_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: {{ template "jamfpro.fullname" . }}-hostingconfig
-                key: db.port
+      - name: nextcloudweb
+        image: "{{ .Values.web.image }}:{{ .Values.web.imageTag }}"
+
       volumes:
       - name: logs
         emptyDir: {}
-# https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application/
-# https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#deployment-and-scaling-guarantees
-# https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/

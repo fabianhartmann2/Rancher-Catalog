@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    dqservice: hostednextcloud
+    cust: "{{ .Values.custnr }}"
+    instanceid: "{{ .Values.instanceid }}"
+    chart: "{{ .Chart.Name }}"
+    release: "{{ .Release.Name }}"
+{{- if .Values.customservicename.enabled }}
+  name: "{{ .Values.customservicename.name }}"
+{{ else }}
+  name: {{ template "nextcloud.fullname" . }}
+{{ end }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  clusterIP: None  # Headless service
+  ports:
+  - port: 11211
+    protocol: TCP
+    targetPort: 11211
+  selector:
+    app: "{{ template "nextcloud.fullname" . }}"
+    dqservice: hostednextcloud
+    cust: "{{ .Values.custnr }}"
+    instanceid: "{{ .Values.instanceid }}"
+    release: "{{ .Release.Name }}"
