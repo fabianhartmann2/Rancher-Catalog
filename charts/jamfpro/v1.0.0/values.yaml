@@ -1,0 +1,100 @@
+
+## memcached image repository
+image: "dqag/jamf"
+## memcached image version
+## ref: https://hub.docker.com/r/library/memcached/tags/
+##
+imageTag: "10.5-tomcat8.0.53-jre8"
+
+## Specify a imagePullPolicy
+## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
+## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+##
+# imagePullPolicy:
+
+## Specify imagePullSecrets
+## ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+##
+# imagePullSecrets: myregistrykey
+
+## Number of replicas to create
+replicas: 3
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 100m
+
+service:
+  type: ClusterIP
+  port: 11211
+  externalIPs: []
+
+logs:
+  ## Expose jamfpro logs
+  enabled: true
+
+  ## baseimage for log container
+  image: quay.io/prometheus/memcached-exporter:v0.4.1
+
+  ## Specify a imagePullPolicy
+  ## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
+  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ##
+  # imagePullPolicy: IfNotPresent
+
+  ## Configure resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    requests:
+      memory: 10Mi
+      cpu: 50m
+
+## Database Settings and credentials
+db:
+  name: jamfdatabasename
+  port: 3306
+  user: hostedjamfdatabaseuser
+  userpw: IamVerryUnsecure
+  rootpw: Iamevenmoreunsecure1234
+
+## jamf Pro Settings
+jamfpro:
+  cacheenabled: true
+  customstorage:
+    enabled: false
+  customdomain:
+    enabled: false
+    fqdn:
+    crt:
+    key:
+## Jamf Pro preconfiguration can be done by a standard template defined, by a custom template for the customer, or both
+  preconfig:
+    license:
+    mail:
+    companyname:
+    standard: true
+    standardgit:
+    standarduser:
+    standardpw:
+    standardgit:
+    custom: false
+    customgit:
+    customuser:
+    custompw:
+
+## Customer number from DQ Tool
+custnr: "0000"
+
+## UID ot the instance
+instanceid: "4E4888E3-E03D-4489-85F6-8211F90303AD"
+## Node labels and tolerations for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
+nodeSelector: {}
+tolerations: []
+affinity: {}

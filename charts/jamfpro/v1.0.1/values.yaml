@@ -1,0 +1,143 @@
+
+## memcached image repository
+image: "dqag/jamf"
+## memcached image version
+## ref: https://hub.docker.com/r/library/memcached/tags/
+##
+imageTag: "10.7.1-tomcat8.5.34-jre8"
+
+## Specify a imagePullPolicy
+## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
+## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+##
+# imagePullPolicy:
+
+## Specify imagePullSecrets
+## ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+##
+# imagePullSecrets: myregistrykey
+
+## Number of replicas to create
+replicas: 3
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 100m
+
+
+## Scaling option for the jamfwebapp
+scaling:
+  updateStrategy:
+    type: RollingUpdate
+  revisionHistoryLimit: 5
+  podManagementPolicy: OrderedReady
+
+logs:
+  ## Expose jamfpro logs
+  enabled: true
+  ## baseimage for log container
+  image: "busybox"
+  imageTag: "1.29.2"
+  logfiles:
+    - name: changemanagement
+      path: "/var/log/JSS/JAMFChangeManagement.log"
+    - name: softwareserver
+      path: "/var/log/JSS/JAMFSoftwareServer.log"
+    - name: access
+      path: "/var/log/JSS/JSSAccess.log"
+    - name: supervisord
+      path: "/var/log/supervisord.log"
+
+
+
+  ## Specify a imagePullPolicy
+  ## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
+  ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+  ##
+  # imagePullPolicy: IfNotPresent
+
+  ## Configure resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    requests:
+      memory: 10Mi
+      cpu: 50m
+
+## Database Settings and credentials
+db:
+  name: jamfprodb
+  port: 3306
+  user: jamfdbuser
+  image: "mysql/mysql-server"
+  imageTag: "5.7.23"
+  livenessProbe:
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
+  readinessProbe:
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
+  settings:
+    logconsole: true
+  logs:
+    ## Expose jamfpro logs
+    enabled: true
+    ## baseimage for log container
+    image: "busybox"
+    imageTag: "1.29.2"
+    logfiles:
+      - name: mysqld
+        path: "/var/log/mysqld.log"
+
+## jamf Pro Settings
+jamfpro:
+  cacheenabled: true
+  customstorage:
+    enabled: false
+  customdomain:
+    enabled: false
+    fqdn:
+    crt:
+    key:
+## Jamf Pro preconfiguration can be done by a standard template defined, by a custom template for the customer, or both
+  preconfig:
+    license:
+    mail:
+    companyname:
+    standard: true
+    standardgit:
+    custom: false
+    customgit:
+  livenessProbe:
+    initialDelaySeconds: 40
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 1
+    failureThreshold: 2
+  readinessProbe:
+    initialDelaySeconds: 30
+    periodSeconds: 5
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 2
+## Customer number from DQ Tool
+custnr: "0000"
+
+## UID ot the instance
+instanceid: "4E4888E3-E03D-4489-85F6-8211F90303AD"
+## Node labels and tolerations for pod assignment
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#taints-and-tolerations-beta-feature
+nodeSelector: {}
+tolerations: []
+affinity: {}
