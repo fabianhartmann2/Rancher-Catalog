@@ -78,7 +78,7 @@ db:
   port: 3306
   user: jamfdbuser
   image: "mysql/mysql-server"
-  imageTag: "5.7.23"
+  imageTag: "5.7.26"
   livenessProbe:
     initialDelaySeconds: 20
     periodSeconds: 10
