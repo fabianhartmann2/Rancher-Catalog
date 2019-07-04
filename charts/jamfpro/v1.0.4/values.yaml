@@ -41,7 +41,7 @@ logs:
   enabled: true
   ## baseimage for log container
   image: "busybox"
-  imageTag: "1.29.2"
+  imageTag: "latest"
   logfiles:
     - name: changemanagement
       path: "/var/log/JSS/JAMFChangeManagement.log"
@@ -98,7 +98,7 @@ db:
     enabled: true
     ## baseimage for log container
     image: "busybox"
-    imageTag: "1.29.2"
+    imageTag: "latest"
     logfiles:
       - name: mysqld
         path: "/var/log/mysqld.log"
