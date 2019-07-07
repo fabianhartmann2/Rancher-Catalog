@@ -16,6 +16,6 @@ name: jamfpro
 #kubeVersion:
 sources:
 - https://www.jamf.com/jamf-nation/my/products
-version: 1.0.4
+version: 1.0.5
 appVersion: 10.14-BETA
 deprecated: false
