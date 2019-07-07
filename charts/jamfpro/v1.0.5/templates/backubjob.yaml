@@ -1,0 +1,61 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ template "jamfpro.fullname" . }}-backup
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: jamfmysql-backup
+    dqservice: hostedjamf
+    cust: "{{ .Values.custnr }}"
+    instanceid: "{{ .Values.instanceid }}"
+    chart: "{{ .Chart.Name }}"
+    release: "{{ .Release.Name }}"
+spec:
+  schedule: "{{ .Values.backup.crontime }}"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          volumes:
+            - name: database-backup
+              nfs:
+                path: /nfs
+                server: 10.100.0.247
+          containers:
+          - name: jamfmysql-backup
+            image: dqag/jamf-backup:0.1
+            imagePullPolicy: Always
+            volumeMounts:
+            - name: database-backup
+              mountPath: /Backups
+              subPath: {{ .Values.custnr }}/{{ template "jamfpro.fullname" . }}/jamfmysql-backup
+            env:
+              - name: keepDaily
+                value: "{{ .Values.backup.keepdaily }}"
+              - name: keepWeekly
+                value: "{{ .Values.backup.keepweekly }}"
+              - name: keepMonthly
+                value: "{{ .Values.backup.keepmonthly }}"
+              - name: MYSQL_DATABASE
+                valueFrom:
+                  configMapKeyRef:
+                    name: {{ template "jamfpro.fullname" . }}-hostingconfig
+                    key: db.name
+              - name: MYSQL_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: {{ template "jamfpro.fullname" . }}-dbcredentials
+                    key: db.user
+              - name: MYSQL_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: {{ template "jamfpro.fullname" . }}-dbcredentials
+                    key: db.userpw
+              - name: MYSQL_SERVER
+                value: {{ template "jamfpro.fullname" . }}-mysql-srv
+          restartPolicy: OnFailure
+{{ if .Values.jamfpro.pullsecret.enabled}}
+          imagePullSecrets: "{{ .Values.imagePullSecrets }}"
+{{ end }}
+# Recources
+# https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html
