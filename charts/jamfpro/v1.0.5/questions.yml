@@ -31,23 +31,6 @@ questions:
     type: string
     label: "Path"
     group: "Hosting"
-- variable: jamfpro.persistentstorage.enabled
-  default: false
-  description: "Select yes it you want to specify a persistent storage."
-  type: boolean
-  label: "Persistent Storage"
-  group: "Hosting"
-  show_subquestion_if: true
-  - variable: jamfpro.persistentstorage.size
-    default: "15Gi"
-    description: "Jamf Pro Persistent Volume Size"
-    type: string
-    label: Jamf Pro Volume Size
-  - variable: jamfpro.persistentstorage.storageClass
-    default: ""
-    description: "If undefined or null, uses the default StorageClass. Default to null"
-    type: storageclass
-    label: Default StorageClass for Jamf Pro
 - variable: jamfpro.pullsecret.enabled
   default: false
   description: "Select yes if you want to specify a secret for image pulls"
