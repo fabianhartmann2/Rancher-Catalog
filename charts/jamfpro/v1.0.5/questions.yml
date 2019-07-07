@@ -8,20 +8,20 @@ questions:
 - variable: customer.dqid
   default: ""
   description: "Enter the DQ Tool adress number."
-  type: string
-  label: "Custom Domain"
+  type: int
+  label: "DQ Tool Address ID"
   group: "Customer"
 - variable: customer.name
   default: ""
   description: "Enter the DQ Tool Customer Name."
   type: string
-  label: "Custom Name"
+  label: "Customer Name"
   group: "Customer"
 - variable: customer.mail
   default: ""
   description: "Enter the DQ Tool Customer Mail. Used to inform, in case of incidents or updates."
   type: string
-  label: "Custom Mail"
+  label: "Customer Mail"
   group: "Customer"
 - variable: jamfpro.customdomain.enabled
   default: false
