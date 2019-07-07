@@ -43,6 +43,7 @@ questions:
   - variable: jamfpro.persistentstorage.size
     description: "Jamf Pro Persistent Volume Size."
     type: string
+    default: "15Gi"
     label: "Jamf Pro Volume size"
     group: "Storage"
   - variable: jamfpro.persistentstorage.storageClass
