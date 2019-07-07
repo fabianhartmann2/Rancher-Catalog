@@ -8,7 +8,7 @@ questions:
 - variable: customer.dqid
   default: ""
   description: "Enter the DQ Tool adress number."
-  type: int
+  type: string
   label: "DQ Tool Address ID"
   group: "Customer"
 - variable: customer.name
