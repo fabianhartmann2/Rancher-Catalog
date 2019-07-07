@@ -5,6 +5,24 @@ categories:
 - WebApp
 - Data Quest AG
 questions:
+- variable: customer.dqid
+  default: ""
+  description: "Enter the DQ Tool adress number."
+  type: string
+  label: "Custom Domain"
+  group: "Customer"
+- variable: customer.name
+  default: ""
+  description: "Enter the DQ Tool Customer Name."
+  type: string
+  label: "Custom Name"
+  group: "Customer"
+- variable: customer.mail
+  default: ""
+  description: "Enter the DQ Tool Customer Mail. Used to inform, in case of incidents or updates."
+  type: string
+  label: "Custom Mail"
+  group: "Customer"
 - variable: jamfpro.customdomain.enabled
   default: false
   description: "Select yes if you'd like to specify an alternative domain to host Jamf Pro. The Service is allways hosted on <releasename>.dq.solutions"
@@ -14,7 +32,7 @@ questions:
   show_subquestion_if: true
   subquestions:
   - variable: jamfpro.customdomain.fqdn
-    description: "Enter the FQDN on which Jamf Pro should be served."
+    description: "Enter the FQDN on which Jamf Pro should be served. You are responsible for the DNS reccords!!"
     type: string
     label: "FQDN"
     group: "Domain"
@@ -38,6 +56,7 @@ questions:
   subquestions:
   - variable: cache.servicename
     description: "Enter the Service Name of the memcached service."
+    default: "jamf-memcached-srv"
     type: string
     label: "Service Name"
     group: "Caching"
