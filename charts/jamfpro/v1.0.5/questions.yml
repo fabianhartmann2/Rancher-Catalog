@@ -43,7 +43,12 @@ questions:
   - variable: jamfpro.persistentstorage.size
     description: "Jamf Pro Persistent Volume Size."
     type: string
-    label: "Jamf Rpo Volume size"
+    label: "Jamf Pro Volume size"
+    group: "Storage"
+  - variable: jamfpro.persistentstorage.storageClass
+    description: "If undefined or null, uses the default StorageClass. Default to null"
+    type: storageclass
+    label: "Default StorageClass for Jamf Pro"
     group: "Storage"
 - variable: jamfpro.pullsecret.enabled
   default: false
