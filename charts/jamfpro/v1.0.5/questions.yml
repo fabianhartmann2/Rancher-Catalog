@@ -5,6 +5,29 @@ categories:
 - WebApp
 - Data Quest AG
 questions:
+- variable: jamfpro.customdomain.enabled
+  default: false
+  description: "Select yes if you'd like to specify an alternative domain to host Jamf Pro. The Service is allways hosted on <releasename>.dq.solutions"
+  type: boolean
+  label: "Custom Domain"
+  group: "Domain"
+  show_subquestion_if: true
+  subquestions:
+  - variable: jamfpro.customdomain.fqdn
+    description: "Enter the FQDN on which Jamf Pro should be served."
+    type: string
+    label: "FQDN"
+    group: "Domain"
+  - variable: jamfpro.customdomain.crt
+    escription: "Paste in the certificate containing its chain as a Base64 Encoded string"
+    type: string
+    label: "Certificate"
+    group: "Domain"
+  - variable: jamfpro.customdomain.key
+    escription: "Paste in the certificate key as a Base64 Encoded string"
+    type: string
+    label: "Private Key"
+    group: "Domain"
 - variable: jamfpro.cacheenabled
   default: true
   description: "If true, memcached is enabled. (recomended)"
@@ -63,29 +86,6 @@ questions:
     description: "Enter the name of the Secret"
     type: string
     label: "Name"
-    group: "Hosting"
-- variable: jamfpro.customdomain.enabled
-  default: false
-  description: "Select yes if you'd like to specify an alternative domain to host Jamf Pro. The Service is allways hosted on <releasename>.dq.solutions"
-  type: boolean
-  label: "Custom Domain"
-  group: "Hosting"
-  show_subquestion_if: true
-  subquestions:
-  - variable: jamfpro.customdomain.fqdn
-    description: "Enter the FQDN on which Jamf Pro should be served."
-    type: string
-    label: "FQDN"
-    group: "Hosting"
-  - variable: jamfpro.customdomain.crt
-    escription: "Paste in the certificate containing its chain as a Base64 Encoded string"
-    type: string
-    label: "Certificate"
-    group: "Hosting"
-  - variable: jamfpro.customdomain.key
-    escription: "Paste in the certificate key as a Base64 Encoded string"
-    type: string
-    label: "Private Key"
     group: "Hosting"
 - variable: jamfpro.preconfig.license
   description: "Please enter the Jamf Pro license for this Customer."
